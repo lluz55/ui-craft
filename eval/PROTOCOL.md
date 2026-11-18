@@ -91,6 +91,8 @@ The judge's `defects_in_treatment` becomes the change list for the next round. O
 - Screenshot judging measures the first screen well and deeper states poorly; the code is provided for the judge to check what the screenshot cannot show.
 - Font loading differences between arms are a confounder; both arms may use the same declared font files when available offline.
 - One judge is one opinion. A round that passes at 7.2 is "no regression", not proof.
+- **Capability asymmetry is a confounder, not a skill bug.** An arm whose model cannot accept image input cannot perform the visual look; it verifies by measurement (`reference/verify.md`, path B) and must say so in its delivery contract. Record each arm's capability in `KEY.txt` before judging, so a weaker verification path is not later read as a weaker design. The judge still receives the PNGs — someone has to see them, even when the builder could not.
+- If the *judge* model is itself blind, the round is invalid for visual scoring: use a sighted judge, or score only the code-level and measured axes and say so in `verdict.md`.
 
 ## Rounds
 

@@ -9,6 +9,11 @@ src/components/SignupForm.tsx:88 — submit disabled as validation feedback — 
 
 Say what you checked when you find nothing. "Audit clean: 41 checks across 6 files" is a result.
 
+**Start with the machine.** `node scripts/shot.mjs <page> out.png 1440 900 --full --deep`
+answers a third of this list by itself (overflow, clipped text, tap targets, heading order,
+focus order, font loading, computed contrast). Then audit the rest by reading code. See
+`reference/verify.md` for the sighted/blind split.
+
 ## Universal (both platforms)
 
 | Check | Fail looks like |

@@ -32,7 +32,8 @@ Then load, in this order and never all at once:
 2. `reference/web.md` or `reference/flutter.md` — the platform you are actually editing;
 3. the command's reference section below;
 4. tables from `reference/` only when the task needs them (`styles.md`, `fonts.md`, `palettes.md`, `anti-patterns.md`);
-5. `reference/craft-floor.md` immediately before delivering.
+5. `reference/verify.md` before you claim anything about how it looks;
+6. `reference/craft-floor.md` immediately before delivering.
 
 ## Commands
 
@@ -53,7 +54,7 @@ Refinement references loaded on demand by `build` or `polish`: `reference/typese
 2. **One idea, fully executed.** Bold in one place — type, color, layout, or motion — and restrained everywhere else. Two competing bold moves read as noise.
 3. **No default kit.** Neutral gray + indigo + one radius + soft shadow on cards is the absence of a decision. See `reference/anti-patterns.md`; if the design contains items from the rejection list, it is not done.
 4. **Every state exists.** Empty, loading, error, success, disabled, overflow, 400-character name, no image, no network, 320px, 200% zoom. A happy path alone is half a screen.
-5. **Never claim you looked when you did not.** If you could not see the render, say so and say what you verified instead.
+5. **Never claim you looked when you did not.** Find out which kind of agent you are — sighted or blind — and verify by the matching path in `reference/verify.md`. A model that cannot accept images measures geometry and contrast instead of pretending to see, and says exactly that in the report.
 6. **Decisions get names and numbers.** "Warm paper `#F7F3EC`, display serif, 1.2 ratio" — not "clean and modern".
 
 ## Context files
@@ -69,7 +70,7 @@ Templates and the extraction procedure (when a repo already has a design): `refe
 ## Workflow
 
 ```
-shape ──▶ build ──▶ criticar (critique + audit) ──▶ fix once ──▶ entregar
+shape ──▶ build ──▶ critique (critique + audit) ──▶ fix once ──▶ verify ──▶ report
 ```
 
 1. **shape** — read PRODUCT.md/DESIGN.md if present; otherwise interview briefly and write them. Produce the plan: subject signal, direction, palette, type, layout, states, and the one bold move.
@@ -77,9 +78,10 @@ shape ──▶ build ──▶ criticar (critique + audit) ──▶ fix once �
 3. **critique** — score against `reference/critique.md` and answer the question that kills generic design: *would I arrive here for any similar page?*
 4. **audit** — run `reference/audit.md` for the platform. Report `file:line`.
 5. **fix once** — apply everything that is not a taste dispute. One round.
-6. **report** — the delivery contract below.
+6. **verify** — `reference/verify.md`. Probe first: can you actually see an image? Sighted agents look at 1440 and 390; blind agents run `scripts/shot.mjs --full --deep` and read the numbers. Both report which one they were.
+7. **report** — the delivery contract below.
 
-If you have a browser or a running app, look at the render before step 5 (web: two widths, 1440 and 390; Flutter: one device size, plus the text-scale-1.3 case). If you do not, skip the look and say so in the report — never fake it.
+Never skip verification because it is inconvenient, and never simulate it. If there is no browser and no image tool, say "unverified" in the contract and name what you could not check.
 
 ## Command detail
 
@@ -170,6 +172,7 @@ An empty "Not verified" is suspicious. If you did not open the render, it is not
 | Adding a second accent "for hierarchy" | Two accents means no accent | Hierarchy from scale, weight, and space |
 | Skipping states because "the API isn't ready" | Empty and error states define the layout | Design them with fake data now |
 | "The screenshot doesn't matter, the code is clean" | Users see pixels, not code | Look at the render, or say you didn't |
+| "The layout feels balanced" with no image tool | That sentence is fabricated evidence | Probe your capability, then run the measuring path |
 | Making everything bold to avoid flatness | Uniform boldness is flatness | One bold move, restraint elsewhere |
 | Copy-pasting the plan for the next screen | Consistent-looking, context-free | Re-derive from PRODUCT.md, keep DESIGN.md |
 | Decorating with the subject's vocabulary (fake circuit traces, fake coffee rings) | Reads as costume | Use material, type, and color as the signal |
@@ -187,6 +190,7 @@ An empty "Not verified" is suspicious. If you did not open the render, it is not
 | `reference/anti-patterns.md` | The rejection list, web + Flutter specific |
 | `reference/critique.md` | Rubric, axes, killer questions |
 | `reference/audit.md` | Mechanical checklist per platform |
+| `reference/verify.md` | Sighted vs blind verification paths, `scripts/shot.mjs` usage, what each may claim |
 | `reference/craft-floor.md` | The floor: pass/fail items before delivery |
 | `reference/typeset.md` | Scale, measure, hierarchy, numerals |
 | `reference/color.md` | Color systems, contrast, dark mode, accents |

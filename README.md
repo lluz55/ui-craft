@@ -75,13 +75,15 @@ reference/
   critique.md             the rubric, the three lenses, evidence rules
   audit.md                mechanical checks, per platform, `file:line` output
   craft-floor.md          the pass/fail gate read before delivering
+  verify.md               sighted vs blind verification, and what each may claim
   typeset.md color.md layout.md motion.md    refinements loaded on demand
 eval/
   PROTOCOL.md             frozen tasks, A/B arms, blind judge, direction, threshold
   JUDGE.md                the judge's rubric and output contract
   tasks/                  T1-brand, T2-product, T3-flutter
 research/                 the five source skills, what was taken, what was rejected, decisions
-scripts/shot.sh           headless-chromium screenshot helper for web arms
+scripts/shot.mjs          zero-dependency render + screenshot + layout audit (CDP)
+scripts/shot.sh           minimal chromium screenshot helper (no metrics)
 runs/                     one directory per eval round (A, B, judge, KEY.txt, verdict.md)
 ```
 
@@ -95,7 +97,13 @@ Details and known instrument limitations: [`eval/PROTOCOL.md`](eval/PROTOCOL.md)
 
 ## Status
 
-Early. The spine and references are written; round 1 of the eval is the next step. Issues and counter-examples welcome — especially Flutter surfaces, where the toolchain gap makes the eval weaker than the web one.
+Early. The spine and references are written. One blind smoke test is committed under `runs/demo-1/` (a context-free agent built T1 from the skill alone): zero horizontal overflow at 1440/390, zero contrast failures, every declared font loaded, and a delivery contract that states honestly what it could not see. The formal A/B round is next.
+
+Note on verification: the skill now has two paths, because not every model can look at a screenshot. `reference/verify.md` makes the agent probe its own capability first — sighted agents look, blind agents measure with `scripts/shot.mjs --deep` and say so. Neither is allowed to fake the other.
+
+Practically: if the model running the skill accepts images, you get the visual loop. If it does not, you get geometry and computed contrast instead of invented adjectives.
+
+Issues and counter-examples welcome — especially Flutter surfaces, where the toolchain gap makes the eval weaker than the web one.
 
 ## License
 
