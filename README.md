@@ -35,6 +35,34 @@ Each of them is strong at one layer, and none covers web + Flutter with one desi
 
 The comparison and what was taken from each: [`research/01-five-skills.md`](research/01-five-skills.md). The decisions (and what was rejected): [`research/02-decisions.md`](research/02-decisions.md).
 
+## Writing that doesn't read as machine-made
+
+The rejection list in `reference/anti-patterns.md` is not a matter of taste. It comes from published evidence about how model output gives itself away — and about how much of it is already in circulation.
+
+| Source | What it establishes |
+| --- | --- |
+| [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) | A field guide to the tells, assembled by WikiProject AI Cleanup from real examples: significance inflation, superficial `-ing` analysis, vague attribution, negative parallelism, hedging disclaimers, templated chrome. |
+| [Kobak et al., *Delving into LLM-assisted writing… through excess vocabulary*](https://arxiv.org/abs/2406.07016) | Across 15 million PubMed abstracts (2010–2024), certain "style words" spiked abruptly after LLMs: at least **13.5% of 2024 abstracts** show signs of LLM processing, reaching **40%** in some subcorpora — a bigger shift than Covid. |
+| [AI slop](https://en.wikipedia.org/wiki/AI_slop) | Kommers et al. (2026) name three properties: **superficial competence, asymmetric effort, mass producibility**. "Slop" was Merriam-Webster's and the American Dialect Society's 2025 Word of the Year. |
+| [Claude: prompt-engineering best practices](https://claude.com/resources/articles/best-practices-for-prompt-engineering) | Explicit constraints and worked examples beat adjectives: "tell the model exactly what you want", and modern models "pay very close attention to details in examples". |
+
+**The mechanism is the point.** Wikipedia's diagnosis is that these models regress to the mean: rare specifics get replaced by common, positive generalizations, so *"the inventor of the first train-coupling device"* becomes *"a revolutionary titan of industry"*. Their image for it is worth repeating — it is like shouting louder and louder that a portrait shows a uniquely important person while the portrait itself fades from a sharp photograph into a generic sketch. In an interface, the same trade shows up as a headline that could belong to any SaaS product and a dashboard whose every block is the same height.
+
+So the skill attacks the cause, not the tics:
+
+1. **Specific beats impressive.** "Move Thursday's night shift to Ana in four clicks" beats "Transform how your team works". If the sentence survives a change of product, it is copy for the category, not for this product.
+2. **Name the subject's own nouns.** Materials, tools, hours, units, place names, the trade's vocabulary — carried as content, never as costume (no fake circuit traces, no decorative coffee rings).
+3. **No significance inflation.** Banned: *stands as, is a testament, plays a pivotal/crucial/vital role, underscores the importance, reflects a broader shift, evolving landscape, indelible mark, key turning point*.
+4. **No `-ing` analysis tacked onto a fact.** "The bakery opens at 5, ensuring freshness and building community" — cut everything from `ensuring` on.
+5. **No hedge-as-content.** "While details are limited…", "based on available information…", "it is important to note…" are admissions wearing a sentence, and inside a product they are a broken screen, not a caveat.
+6. **No "not just X, but Y".** The construction is a tell by itself, and in UI copy it usually replaces a number with a feeling.
+7. **Show an example instead of describing an adjective.** The same advice the model provider gives for prompts applies to style guides in a repo: one real headline from this product outperforms the word "premium".
+8. **Exemplars must be clean.** Models imitate examples closely — including the flaws in them. A style guide with two sloppy samples produces sloppy output.
+
+Where this lands in the skill: `reference/anti-patterns.md` (the rejection list), `reference/craft-floor.md` (placeholder copy and invented claims are fail conditions), `reference/audit.md` (copy checks), and `eval/JUDGE.md`, where copy carries double weight on `T1-brand`.
+
+**What this is not.** Chasing tells does not produce better writing — Wikipedia says as much, warning that treating the signs *as the problem* can "just make detection harder" while leaving the actual problem in place: prose that is generic because nothing specific was known or said. Detectors are not a gate either (they have non-trivial error rates), and neither are humans: a 2025 study found human ability to tell LLM text from human text was no better than chance. The skill therefore optimizes for the thing that is measurable and that readers feel — whether a specific decision was made, named, and defended — and treats the vocabulary list as a smoke alarm, not the fire.
+
 ## Install
 
 As a skill for an agent harness that reads `SKILL.md` (DeepSeek Harness, Claude Code, Codex-style skill directories):
