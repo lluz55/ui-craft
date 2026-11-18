@@ -93,7 +93,7 @@ Input: a brief, a repo, or a request. Output: a plan, plus PRODUCT.md/DESIGN.md 
 1. **Anchor in the subject.** What is this thing, physically? A bakery, a database tool, a bus schedule. Extract three concrete signals: material, vocabulary, and one artefact of the trade. These become texture, not decoration.
 2. **Choose one direction** from `reference/styles.md` — or a named hybrid. Write one sentence of *why this direction and not the neighboring one*. Load `reference/fonts.md` and `reference/palettes.md` and pick from restrained sets; do not generate a palette from scratch unless the brand demands it.
 3. **Name the one bold move.** The single place where this page is allowed to be surprising. Everything else obeys the grid.
-4. **Write the palette** as 4–6 named hex values with roles (surface, ink, muted, accent, accent-ink), not twelve tokens.
+4. **Choose the chromatic strategy before the colours** — paper, white room, saturated field, dark first, mono ramp, duotone, or brutalist contrast (`reference/palettes.md`). Then write the palette as 4–6 named hex values with roles (surface, ink, muted, accent, accent-ink), not twelve tokens. If the project already has a palette, reuse it and say so; if the last surface you built used paper, this one does not get to use paper again.
 5. **Write the type scale** as roles: display, heading, body, label, data. One family, or two with a clear split (display vs text). Sizes from a ratio, measure ≤ 80 characters.
 6. **Sketch the layout in ASCII** — three to five blocks, with the alignment logic and the reading path. Cheap, fast, exposes the empty middle column before you write CSS.
 7. **List the states in scope** for this surface.

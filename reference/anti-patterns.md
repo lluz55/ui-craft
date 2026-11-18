@@ -6,6 +6,8 @@ If a delivered surface contains items from this list, it is not done. Fix or jus
 
 - The default kit: indigo `#6366F1`, `rounded-lg`, `shadow-sm`, Inter, gray-50 page, three identical cards.
 - Cream `#F4F1EA` + display serif + terracotta `#D97757`, in that exact combination.
+- **The cream-paper cousin**: warm off-white surface (hue 40–55°, lightness 88–94°) + near-black ink + one muted accent + hairline rules, no shadows. It is not on the default-kit list, which is exactly why it feels like a decision. Name the reason or change strategy (`reference/palettes.md`).
+- The same palette family twice in a row across unrelated projects: paper, paper, paper again.
 - Near-black page + acid green or vermilion accent, used as a personality substitute.
 - Purple-to-blue gradient on a hero or a button. Any gradient used as decoration rather than light or material.
 - Glassmorphism over a background that carries no information.
