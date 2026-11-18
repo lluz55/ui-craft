@@ -6,9 +6,9 @@ The instrument is inherited from the `skill_factore` eval (A/B in clean contexts
 
 ## Why this shape
 
-A UI skill can be "improved" by making the baseline worse (more words, more rules that inflate effort) or by luck with one task. Four frozen tasks — a marketing page, a data-dense operating tool, a dashboard and a Flutter screen — and a blind judge on rendered screenshots force the gain to show up in the pixels.
+A UI skill can be "improved" by making the baseline worse (more words, more rules that inflate effort) or by luck with one task. Five frozen tasks — a marketing page, a data-dense operating tool, a dashboard, a three-surface back-office console and a Flutter screen — and a blind judge on rendered screenshots force the gain to show up in the pixels.
 
-## The four frozen tasks
+## The five frozen tasks
 
 | ID | Task | What it stresses |
 | --- | --- | --- |
@@ -16,6 +16,7 @@ A UI skill can be "improved" by making the baseline worse (more words, more rule
 | `T2-product` | Fleet telemetry dashboard, light + dark | Dense data, states, tables, hierarchy, platform craft |
 | `T3-flutter` | Goal-saving app screen in Flutter with empty/loading/error | Platform idioms, theme discipline, text scale, semantics |
 | `T4-ops` | Club-management hub (Football Manager-like) with squad and standings tables plus data reads | Dense tables, chart discipline, numbers that reconcile, light+dark roles |
+| `T5-mesa` | Three-surface collections console (queue, contract with agreement simulator, printable A4 letter) | Cross-screen arithmetic, dirty source data surfaced not fixed, print stylesheet, keyboard-first, 320px with no horizontal scroll |
 
 Full briefs: `eval/tasks/`. Identical text in both arms, every round.
 

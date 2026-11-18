@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Contrato — Mesa · Banco Farol</title>
+<meta name="description" content="Detalhe do contrato: composição do débito, histórico de pagamentos, simulador de acordo e registro de contato.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contrato">
+<a class="pular" href="#conteudo">Ir para o contrato</a>
+
+<header class="topo">
+  <div class="topo-marca">
+    <a class="marca" href="fila.html"><span class="marca-nome">Mesa</span><span class="marca-banco">Banco Farol</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="fila.html">Fila</a>
+      <a href="contrato.html" aria-current="page">Contrato</a>
+      <a href="carta.html">Carta</a>
+    </nav>
+  </div>
+  <div class="topo-acoes">
+    <div class="busca-campo">
+      <label class="sr-only" for="busca">Buscar por nome ou contrato</label>
+      <input id="busca" type="search" placeholder="Buscar nome ou contrato" autocomplete="off" spellcheck="false">
+      <kbd class="kbd" aria-hidden="true">/</kbd>
+    </div>
+    <button type="button" class="btn btn-fantasma btn-tema" data-acao="tema" aria-pressed="false">
+      <span class="glifo" aria-hidden="true">◐</span><span class="tema-txt">claro</span>
+    </button>
+    <button type="button" class="btn btn-fantasma btn-paleta" data-acao="paleta">
+      <span class="pal-txt">Comandos</span><kbd class="kbd" aria-hidden="true">⌘K</kbd>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo" class="pagina">
+  <h1 class="sr-only" id="h1-contrato">Detalhe do contrato</h1>
+  <div id="contrato-raiz"></div>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<dialog id="dlg-encerrar" class="dialogo" aria-label="Confirmar encerramento do contrato">
+  <div id="dlg-corpo"></div>
+</dialog>
+
+<dialog id="paleta" class="paleta" aria-label="Paleta de comandos">
+  <label class="sr-only" for="paleta-busca">Comando, cliente ou contrato</label>
+  <input id="paleta-busca" type="text" placeholder="Comando, cliente ou contrato…" autocomplete="off" spellcheck="false">
+  <ul id="paleta-lista" role="listbox" aria-label="Comandos"></ul>
+  <p class="paleta-pe"><kbd>↑</kbd><kbd>↓</kbd> mover · <kbd>Enter</kbd> executar · <kbd>Esc</kbd> fechar</p>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

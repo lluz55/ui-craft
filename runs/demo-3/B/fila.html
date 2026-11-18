@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fila de cobrança — Mesa</title>
+<meta name="description" content="Fila de cobrança do Banco Farol: contratos em atraso ordenados por risco.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="fila">
+<a class="skip" href="#conteudo">Pular para a fila</a>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <a class="brand" href="fila.html">
+      <span class="brand__name">Mesa</span>
+      <span class="brand__sub">Banco Farol &middot; cobrança</span>
+    </a>
+
+    <nav class="nav" aria-label="Superfícies">
+      <a href="fila.html" data-page="fila">Fila</a>
+      <a href="contrato.html?c=CTR-1188" data-page="contrato">Contrato</a>
+      <a href="carta.html?c=CTR-1188" data-page="carta">Carta</a>
+    </nav>
+
+    <div class="masthead__meta">
+      <span class="clock" id="relogio">19/11/2026 &middot; 09:42</span>
+      <button class="icon-btn" type="button" id="btn-tema" aria-label="Ativar tema escuro" title="Alternar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"></path>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="conteudo">
+  <section class="ledger" aria-labelledby="titulo-fila">
+    <div class="ledger__intro">
+      <h1 id="titulo-fila">Fila de cobrança</h1>
+      <p class="ledger__rule">
+        Ordenada por <strong>risco</strong>: dias em atraso, saldo devedor e última tentativa de contato.
+        A linha com <strong>traço verde à esquerda</strong> é a maior dívida da carteira — comece por ela.
+        <em>Divergência de valores aparece na própria linha; não é corrigida em silêncio.</em>
+      </p>
+      <ul class="ledger__facts">
+        <li><span class="n" id="k-contratos">9</span> contratos em atraso</li>
+        <li><span class="n" id="k-acordo">2</span> em acordo</li>
+        <li><span class="n n--flag" id="k-div">1</span> com divergência de R$ 36,00</li>
+      </ul>
+    </div>
+
+    <div class="footing">
+      <p class="footing__label">total em atraso &middot; soma dos saldos</p>
+      <p class="footing__num"><span class="footing__cur">R$</span><span id="total-carteira">81.356,67</span></p>
+      <p class="footing__sub" id="total-nota">pela composição seria <strong>R$ 81.392,67</strong> <span class="flag">+36,00</span> &middot; a maior ligação de hoje é <strong>Ademir Fontes</strong></p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="field">
+      <label for="busca">buscar por nome ou contrato</label>
+      <input class="input" id="busca" type="search" autocomplete="off" spellcheck="false"
+             placeholder="Heloísa, CTR-7712" aria-describedby="busca-dica">
+      <kbd aria-hidden="true">/</kbd>
+      <span class="sr-only" id="busca-dica">Atalho: barra. Use j e k para mover a seleção, Enter para abrir o contrato.</span>
+    </div>
+
+    <div class="field">
+      <span class="label" id="lbl-status">status</span>
+      <div class="chips" role="group" aria-label="filtrar por status">
+        <button class="chip" type="button" data-filtro="todos" aria-pressed="true">todos <span class="chip__n">9</span></button>
+        <button class="chip" type="button" data-filtro="sem" aria-pressed="false">sem contato <span class="chip__n">3</span></button>
+        <button class="chip" type="button" data-filtro="promessa" aria-pressed="false">promessa <span class="chip__n">2</span></button>
+        <button class="chip" type="button" data-filtro="acordo" aria-pressed="false">em acordo <span class="chip__n">2</span></button>
+        <button class="chip" type="button" data-filtro="recusa" aria-pressed="false">recusa <span class="chip__n">1</span></button>
+        <button class="chip" type="button" data-filtro="parcial" aria-pressed="false">parcial <span class="chip__n">1</span></button>
+      </div>
+    </div>
+
+    <p class="count" id="contagem" aria-live="polite">9 de 9 contratos</p>
+  </div>
+
+  <div class="strip" id="fita" aria-live="polite">
+    <span><strong>9 de 9</strong> contratos</span>
+    <span>ordem: <strong>risco</strong> &uarr; crescente</span>
+    <span>status: <strong>todos</strong></span>
+    <span>busca: <strong>&mdash;</strong></span>
+  </div>
+
+  <div class="table-wrap" id="tabela-wrap">
+    <table class="fila" id="fila">
+      <caption class="sr-only">Contratos em atraso, ordenados por risco. Colunas ordenáveis; valores de saldo em reais.</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="c-rank" data-key="risco" aria-sort="ascending">
+            <button class="sort" type="button" data-sort="risco">risco <span class="sort__i">&uarr;</span></button>
+          </th>
+          <th scope="col" class="c-cliente" data-key="cliente" aria-sort="none">
+            <button class="sort" type="button" data-sort="cliente">cliente <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-contrato" data-key="contrato" aria-sort="none">
+            <button class="sort" type="button" data-sort="contrato">contrato <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-venceu" data-key="venceu" aria-sort="none">
+            <button class="sort" type="button" data-sort="venceu">venceu <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-dias" data-key="dias" aria-sort="none">
+            <button class="sort" type="button" data-sort="dias">dias <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-saldo" data-key="saldo" aria-sort="none">
+            <button class="sort" type="button" data-sort="saldo">saldo (R$) <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-status" data-key="status" aria-sort="none">
+            <button class="sort" type="button" data-sort="status">status <span class="sort__i"></span></button>
+          </th>
+          <th scope="col" class="c-ultima" data-key="ultima" aria-sort="none">
+            <button class="sort" type="button" data-sort="ultima">última tentativa <span class="sort__i"></span></button>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="fila-corpo"></tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap" id="sk-wrap">
+    <div class="skeleton" id="fila-sk" aria-hidden="true" hidden>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+      <div class="sk__row"><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span><span class="sk__b"></span></div>
+    </div>
+  </div>
+
+  <div class="state" id="vazia" hidden>
+    <p class="state__title">Nenhum contrato com esse filtro</p>
+    <p>Não há contrato com esse status e essa busca ao mesmo tempo. Limpe a busca ou volte para todos os status.</p>
+    <button class="btn" type="button" id="limpa-filtros">limpar busca e filtros</button>
+  </div>
+
+  <div class="state state--error" id="fila-erro" hidden>
+    <p class="state__title">Não foi possível carregar a fila</p>
+    <p>O core de cobrança não respondeu (tempo esgotado em 10 s). Nada foi perdido: os registros de contato ficam neste navegador até o core voltar.</p>
+    <a class="btn" href="fila.html">tentar de novo</a>
+  </div>
+</main>
+
+<footer class="foot wrap">
+  <span>Mesa &middot; Banco Farol &middot; cobrança</span>
+  <span>corte de dados 19/11/2026 09:42</span>
+  <span>regra: juros 1% a.m. pro rata die &middot; multa 2% sobre o principal</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

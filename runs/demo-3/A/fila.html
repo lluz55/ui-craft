@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Fila de cobrança — Mesa · Banco Farol</title>
+<meta name="description" content="Fila de cobrança do Banco Farol, ordenada por risco.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="fila">
+<a class="pular" href="#conteudo">Ir para a fila</a>
+
+<header class="topo">
+  <div class="topo-marca">
+    <a class="marca" href="fila.html"><span class="marca-nome">Mesa</span><span class="marca-banco">Banco Farol</span></a>
+    <nav class="nav" aria-label="Seções">
+      <a href="fila.html" aria-current="page">Fila</a>
+      <a href="contrato.html">Contrato</a>
+      <a href="carta.html">Carta</a>
+    </nav>
+  </div>
+  <div class="topo-acoes">
+    <div class="busca-campo">
+      <label class="sr-only" for="busca">Buscar por nome ou contrato</label>
+      <input id="busca" type="search" placeholder="Buscar nome ou contrato" autocomplete="off" spellcheck="false">
+      <kbd class="kbd" aria-hidden="true">/</kbd>
+    </div>
+    <button type="button" class="btn btn-fantasma btn-tema" data-acao="tema" aria-pressed="false">
+      <span class="glifo" aria-hidden="true">◐</span><span class="tema-txt">claro</span>
+    </button>
+    <button type="button" class="btn btn-fantasma btn-paleta" data-acao="paleta">
+      <span class="pal-txt">Comandos</span><kbd class="kbd" aria-hidden="true">⌘K</kbd>
+    </button>
+  </div>
+</header>
+
+<main id="conteudo" class="pagina">
+  <h1 class="sr-only">Fila de cobrança — contratos em atraso por risco</h1>
+  <section id="carteira" class="carteira" aria-label="Resumo da carteira"></section>
+
+  <section class="filtros" aria-label="Filtros e ordenação">
+    <div id="status-filtro" class="chips">
+      <button class="chip" type="button" data-status="todos" aria-pressed="true">Todos <span class="chip-n">9</span></button>
+      <button class="chip" type="button" data-status="sem_contato" aria-pressed="false">Sem contato <span class="chip-n">3</span></button>
+      <button class="chip" type="button" data-status="promessa" aria-pressed="false">Promessa <span class="chip-n">2</span></button>
+      <button class="chip" type="button" data-status="acordo" aria-pressed="false">Em acordo <span class="chip-n">2</span></button>
+      <button class="chip" type="button" data-status="recusa" aria-pressed="false">Recusa <span class="chip-n">1</span></button>
+      <button class="chip" type="button" data-status="parcial" aria-pressed="false">Parcial <span class="chip-n">1</span></button>
+    </div>
+    <div class="filtros-dir">
+      <label class="ordenar-lab" for="ordenar">Ordenar</label>
+      <select id="ordenar">
+        <option value="risco:desc">Risco</option>
+        <option value="cliente:asc">Cliente A–Z</option>
+        <option value="contrato:asc">Contrato</option>
+        <option value="dias:desc">Dias em atraso</option>
+        <option value="saldo:desc">Saldo devedor</option>
+        <option value="status:asc">Status</option>
+        <option value="ultima:desc">Última tentativa</option>
+      </select>
+      <span id="contagem" class="mono contagem">9 de 9</span>
+    </div>
+  </section>
+
+  <div id="vazio-fila" class="vazio" role="status" hidden></div>
+
+  <div class="tabela-caixa">
+    <table id="tabela-fila" class="tabela">
+      <caption class="legenda">Escala de atraso 0–130 dias, marcas a cada 30 · barra em sinal a partir de 90 dias.</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="th-rank" aria-sort="descending">
+            <button type="button" class="ord" data-sort="risco">#<span class="seta" aria-hidden="true">↓</span></button>
+          </th>
+          <th scope="col" aria-sort="none">
+            <button type="button" class="ord" data-sort="cliente">Cliente<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" aria-sort="none">
+            <button type="button" class="ord" data-sort="contrato">Contrato<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" class="th-venc" aria-sort="none">
+            <button type="button" class="ord" data-sort="venc">Venceu<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" class="th-dias" aria-sort="none">
+            <button type="button" class="ord" data-sort="dias">Dias em atraso<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" class="th-saldo" aria-sort="none">
+            <button type="button" class="ord" data-sort="saldo">Saldo devedor<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" aria-sort="none">
+            <button type="button" class="ord" data-sort="status">Status<span class="seta" aria-hidden="true"></span></button>
+          </th>
+          <th scope="col" class="th-ultima" aria-sort="none">
+            <button type="button" class="ord" data-sort="ultima">Última tentativa<span class="seta" aria-hidden="true"></span></button>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="corpo-fila"></tbody>
+    </table>
+  </div>
+
+  <footer class="rodape">
+    <div>
+      <span class="rotulo">Regra de encargos</span>
+      <p>Juros de 1% ao mês, <em>pro rata die</em> sobre o principal; multa de 2% sobre o principal; total = principal + juros + multa, arredondado ao centavo. O saldo devedor desconta o que já foi pago.</p>
+    </div>
+    <div>
+      <span class="rotulo">Ordem de risco</span>
+      <p>risco = dias em atraso + 10 × log₂(saldo ÷ R$ 1.000); empate pelo maior saldo. Clique em qualquer coluna para reordenar — a URL guarda a ordem.</p>
+    </div>
+    <div>
+      <span class="rotulo">Teclado</span>
+      <p><kbd>/</kbd> busca · <kbd>j</kbd> <kbd>k</kbd> seleção · <kbd>Enter</kbd> abre · <kbd>Esc</kbd> volta · <kbd>⌘K</kbd> comandos</p>
+    </div>
+  </footer>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<dialog id="paleta" class="paleta" aria-label="Paleta de comandos">
+  <label class="sr-only" for="paleta-busca">Comando, cliente ou contrato</label>
+  <input id="paleta-busca" type="text" placeholder="Comando, cliente ou contrato…" autocomplete="off" spellcheck="false">
+  <ul id="paleta-lista" role="listbox" aria-label="Comandos"></ul>
+  <p class="paleta-pe"><kbd>↑</kbd><kbd>↓</kbd> mover · <kbd>Enter</kbd> executar · <kbd>Esc</kbd> fechar</p>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

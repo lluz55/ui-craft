@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carta de cobrança — Mesa</title>
+<meta name="description" content="Carta de cobrança do Banco Farol, uma página A4, para envio pelo correio.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="carta">
+<a class="skip no-print" href="#carta">Pular para a carta</a>
+
+<div class="screenbar no-print">
+  <p class="who">Mesa &middot; carta de cobrança &middot; A4</p>
+  <div class="screenbar__actions">
+    <a class="btn btn--sm" href="contrato.html" id="l-voltar">&larr; contrato</a>
+    <button class="btn btn--sm btn--primary" type="button" id="btn-imprimir">imprimir / PDF</button>
+  </div>
+</div>
+
+<main>
+  <article class="sheet" id="carta" aria-labelledby="l-titulo">
+    <header class="letter-head">
+      <p class="letter-bank">Banco Farol</p>
+      <p class="letter-dept">Departamento de Cobrança<br>Av. Rio Branco, 1.200 &middot; Recife/PE</p>
+    </header>
+
+    <p class="letter-meta">
+      <span>emissão <strong id="l-emissao">19/11/2026</strong></span>
+      <span>contrato <strong id="l-contrato">CTR-1188</strong></span>
+      <span>página 1 de 1</span>
+    </p>
+
+    <h1 id="l-titulo">Aviso de débito em atraso</h1>
+
+    <div class="letter-to">
+      <p><strong><span id="l-cliente">Osvaldo Reis</span></strong></p>
+      <p id="l-endereco">Rua das Acácias, 214, Boa Vista</p>
+      <p id="l-cidade">Recife/PE &middot; 50050-000</p>
+    </div>
+
+    <p class="lead">
+      Nosso registro mostra que o contrato abaixo está em atraso. Os valores incluem juros e multa
+      contratuais, calculados até a data de emissão desta carta. Se o pagamento já foi feito, desconsidere
+      este aviso e guarde o comprovante.
+    </p>
+
+    <div class="letter-values">
+      <div class="letter-values__head">
+        <span>composição do débito</span>
+        <span>valores em reais</span>
+      </div>
+      <table>
+        <caption class="sr-only">Composição do débito do contrato, em reais</caption>
+        <tbody>
+          <tr>
+            <td>principal</td>
+            <td class="v">R$&nbsp;<span id="l-principal">15.600,00</span></td>
+          </tr>
+          <tr>
+            <td>juros &middot; 1% ao mês pro rata die</td>
+            <td class="v">R$&nbsp;<span id="l-juros">254,80</span></td>
+          </tr>
+          <tr>
+            <td>multa &middot; 2% sobre o principal</td>
+            <td class="v">R$&nbsp;<span id="l-multa">312,00</span></td>
+          </tr>
+          <tr class="total">
+            <td>total no core</td>
+            <td class="v">R$&nbsp;<span id="l-total">16.166,80</span></td>
+          </tr>
+          <tr>
+            <td colspan="2"><hr class="hr-double"></td>
+          </tr>
+          <tr id="linha-pago" hidden>
+            <td>pagamento em <span id="l-pago-data">20/10/2026</span></td>
+            <td class="v"><span id="l-pago">&minus; R$ 4.000,00</span></td>
+          </tr>
+          <tr class="total">
+            <td>saldo devedor</td>
+            <td class="v">R$&nbsp;<span id="l-saldo">12.166,80</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="letter-internal" id="linha-divergencia" hidden>
+        Divergência no core: o total difere da soma de principal, juros e multa em
+        <strong id="l-divergencia">R$ 36,00</strong>. Vale o total do core; a diferença está registrada
+        para conferência.
+      </p>
+    </div>
+
+    <div class="letter-pay">
+      <h2>até quando e como pagar</h2>
+      <ol>
+        <li><strong>Prazo:</strong> até <strong id="l-prazo">19/12/2026</strong>. Vencimento original em <span id="l-vencimento">01/10/2026</span>, <span id="l-dias">49</span> dias em atraso.</li>
+        <li><strong>Boleto:</strong> aplicativo Farol, em Pagamentos &rsaquo; Boletos, com o número do contrato.</li>
+        <li><strong>PIX:</strong> CNPJ 12.345.678/0001-90, informando o contrato no campo de identificação.</li>
+        <li><strong>Central:</strong> 0800 123 4567, de segunda a sexta, das 8h às 20h.</li>
+      </ol>
+      <p>Depois do prazo, o contrato pode ser encaminhado a cobrança judicial, com custas adicionais.</p>
+    </div>
+
+    <footer class="letter-sign">
+      <p>Recife, 19 de novembro de 2026.</p>
+      <p class="sig"><strong>Gerência de Cobrança</strong> &middot; Banco Farol S.A.</p>
+      <div class="letter-foot">
+        <span id="l-rodape">documento gerado por Mesa em 19/11/2026 09:42 &middot; página 1 de 1</span>
+        <span>Banco Farol S.A. &middot; CNPJ 12.345.678/0001-90</span>
+      </div>
+    </footer>
+  </article>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

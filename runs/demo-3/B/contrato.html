@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrato — Mesa</title>
+<meta name="description" content="Detalhe do contrato em cobrança: composição do débito, pagamentos, simulador de acordo e registro de contato.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contrato">
+<a class="skip" href="#pagina">Pular para o contrato</a>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <a class="brand" href="fila.html">
+      <span class="brand__name">Mesa</span>
+      <span class="brand__sub">Banco Farol &middot; cobrança</span>
+    </a>
+
+    <nav class="nav" aria-label="Superfícies">
+      <a href="fila.html" data-page="fila">Fila</a>
+      <a href="contrato.html?c=CTR-1188" data-page="contrato">Contrato</a>
+      <a href="carta.html?c=CTR-1188" data-page="carta">Carta</a>
+    </nav>
+
+    <div class="masthead__meta">
+      <span class="clock" id="relogio">19/11/2026 &middot; 09:42</span>
+      <button class="icon-btn" type="button" id="btn-tema" aria-label="Ativar tema escuro" title="Alternar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"></path>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7Z"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="pagina"></main>
+
+<div class="wrap" id="contrato-sk" hidden aria-busy="true">
+  <div class="sk-detail" aria-hidden="true">
+    <span class="sk__b" style="width:120px;height:9px"></span>
+    <span class="sk__b" style="width:min(340px,70%);height:26px"></span>
+    <span class="sk__b" style="width:min(440px,80%);height:9px"></span>
+    <div class="sk-grid">
+      <div class="sk-stack">
+        <span class="sk__b" style="width:36%"></span>
+        <span class="sk__b" style="width:92%"></span>
+        <span class="sk__b" style="width:84%"></span>
+        <span class="sk__b" style="width:88%"></span>
+        <span class="sk__b" style="width:70%"></span>
+        <span class="sk__b" style="width:34%"></span>
+      </div>
+      <div class="sk-stack">
+        <span class="sk__b" style="width:48%"></span>
+        <span class="sk__b" style="width:86%"></span>
+        <span class="sk__b" style="width:78%"></span>
+        <span class="sk__b" style="width:90%"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="contrato-vazio" hidden>
+  <div class="state">
+    <p class="state__title" role="heading" aria-level="1">Nenhum contrato selecionado</p>
+    <p>A página de contrato precisa de um contrato. Abra a fila e escolha uma linha — ou use o atalho <kbd>/</kbd> para buscar pelo nome ou pelo número.</p>
+    <a class="btn" href="fila.html">abrir a fila</a>
+  </div>
+</div>
+
+<div class="wrap" id="contrato-erro" hidden>
+  <div class="state state--error">
+    <p class="state__title" role="heading" aria-level="1">Não foi possível carregar o contrato <span class="mono" id="erro-id">&mdash;</span></p>
+    <p>O core não devolveu a composição do débito para este contrato. Nada foi alterado. Tente de novo em alguns segundos; se continuar, abra a fila e siga para outro contrato.</p>
+    <a class="btn" href="fila.html">voltar à fila</a>
+  </div>
+</div>
+
+<footer class="foot wrap">
+  <span>Mesa &middot; Banco Farol &middot; cobrança</span>
+  <span>corte de dados 19/11/2026 09:42</span>
+  <span>regra: juros 1% a.m. pro rata die &middot; multa 2% sobre o principal</span>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  <span id="toast-msg"></span>
+  <button class="btn btn--sm" type="button" id="toast-action" hidden>desfazer</button>
+</div>
+
+<dialog id="dlg-encerrar" aria-labelledby="dlg-t" aria-describedby="dlg-d">
+  <div class="dlg__head">
+    <h2 id="dlg-t">Encerrar <span class="mono" id="dlg-contrato">CTR-1188</span> como prejuízo?</h2>
+  </div>
+  <div class="dlg__body" id="dlg-d">
+    <p>Cliente <strong id="dlg-cliente">Osvaldo Reis</strong>, saldo devedor de <span class="amount" id="dlg-valor">R$ 12.166,80</span>. O contrato sai da cobrança ativa e esse valor é lançado como perda.</p>
+    <label class="check">
+      <input type="checkbox" id="confirma-check">
+      <span>Confirmo que li o contrato e o valor, e que o lançamento será feito como prejuízo.</span>
+    </label>
+  </div>
+  <div class="dlg__foot">
+    <button class="btn" type="button" id="cancela-encerrar">cancelar</button>
+    <button class="btn btn--danger" type="button" id="confirma-encerrar" disabled>encerrar contrato</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

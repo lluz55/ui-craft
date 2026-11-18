@@ -13,6 +13,7 @@
  *
  *   --full   capture the whole page, not just the viewport
  *   --dark   emulate prefers-color-scheme: dark
+ *   --print  emulate @media print (A4 is 794x1123 at 96dpi)
  *   --deep   add the blind-path audit: clipped text, tap targets, heading
  *            outline, focus order, font loading, computed contrast pairs
  *
@@ -30,6 +31,7 @@ const argv = process.argv.slice(2);
 const full = argv.includes("--full");
 const deep = argv.includes("--deep");
 const dark = argv.includes("--dark");
+const printMode = argv.includes("--print");
 const [page, out, wArg, hArg] = argv.filter((a) => !a.startsWith("--"));
 
 if (!page || !out) {
@@ -273,6 +275,10 @@ try {
   await call("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 600 });
   if (dark) {
     await call("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: "dark" }] });
+  }
+  if (printMode) {
+    // render the print stylesheet instead of the screen one
+    await call("Emulation.setEmulatedMedia", { media: "print" });
   }
   await call("Page.navigate", { url: pathToFileURL(resolve(page)).href });
   await new Promise((r) => setTimeout(r, 900));
