@@ -109,7 +109,7 @@ reference/
 eval/
   PROTOCOL.md             frozen tasks, A/B arms, blind judge, direction, threshold
   JUDGE.md                the judge's rubric and output contract
-  tasks/                  T1-brand, T2-product, T3-flutter, T4-ops, T5-mesa
+  tasks/                  T1-brand, T2-product, T3-flutter, T4-ops, T5-mesa, T6-mare
 research/                 the five source skills, what was taken, what was rejected, decisions
 scripts/shot.mjs          zero-dependency render + screenshot + layout audit (CDP)
                           --deep also reports images (alt, ratio, size) and motion (durations, loops, reduced-motion)

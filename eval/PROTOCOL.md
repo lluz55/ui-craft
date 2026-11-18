@@ -8,7 +8,7 @@ The instrument is inherited from the `skill_factore` eval (A/B in clean contexts
 
 A UI skill can be "improved" by making the baseline worse (more words, more rules that inflate effort) or by luck with one task. Five frozen tasks — a marketing page, a data-dense operating tool, a dashboard, a three-surface back-office console and a Flutter screen — and a blind judge on rendered screenshots force the gain to show up in the pixels.
 
-## The five frozen tasks
+## The six frozen tasks
 
 | ID | Task | What it stresses |
 | --- | --- | --- |
@@ -17,6 +17,7 @@ A UI skill can be "improved" by making the baseline worse (more words, more rule
 | `T3-flutter` | Goal-saving app screen in Flutter with empty/loading/error | Platform idioms, theme discipline, text scale, semantics |
 | `T4-ops` | Club-management hub (Football Manager-like) with squad and standings tables plus data reads | Dense tables, chart discipline, numbers that reconcile, light+dark roles |
 | `T5-mesa` | Three-surface collections console (queue, contract with agreement simulator, printable A4 letter) | Cross-screen arithmetic, dirty source data surfaced not fixed, print stylesheet, keyboard-first, 320px with no horizontal scroll |
+| `T6-mare` | Boutique inn landing page with five supplied photographs and a booking form | Using real imagery (art direction, crops, srcset, scrim), exactly one motion moment, reduced motion, mobile-first |
 
 Full briefs: `eval/tasks/`. Identical text in both arms, every round.
 
@@ -42,6 +43,7 @@ Both arms get the same tools, the same time budget (stated per round), and the s
 
 - Web tasks: `index.html` + `styles.css` (+ `app.js` if needed), no build step, no external network except the fonts declared in the file; screenshots `shot-1440.png`, `shot-390.png` produced by headless Chromium.
 - `T4-ops` additionally: `PLAN.md`, and screenshots at `shot-1440.png` and `shot-1024.png`.
+- `T6-mare` additionally: its five source photographs copied into `images/`, and `PLAN.md`.
 - Flutter task: the screen as `lib/` + `pubspec.yaml`, plus a rendered screenshot if the toolchain exists; if not, a widget test asserting the three states plus a hand-built spec note. Missing toolchain is recorded, not faked.
 
 ## Judge — blind, screenshots first
