@@ -27,6 +27,9 @@ If you could not check an item (no browser, no device), the delivery report says
 - [ ] Errors state cause and remedy.
 - [ ] Empty states have a sentence and an action.
 - [ ] Numbers are formatted for the locale; dates are unambiguous.
+- [ ] Every number has an alignment, a unit, and something to compare it to.
+- [ ] Numbers reconcile wherever they repeat on the surface.
+- [ ] Each chart states its question, shows a reference, and is legible in grayscale.
 - [ ] The longest realistic string does not break the layout.
 
 ## 4. Every state exists

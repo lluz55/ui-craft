@@ -6,15 +6,16 @@ The instrument is inherited from the `skill_factore` eval (A/B in clean contexts
 
 ## Why this shape
 
-A UI skill can be "improved" by making the baseline worse (more words, more rules that inflate effort) or by luck with one task. Three frozen tasks, two surfaces types plus one Flutter surface, and a blind judge on rendered screenshots force the gain to show up in the pixels.
+A UI skill can be "improved" by making the baseline worse (more words, more rules that inflate effort) or by luck with one task. Four frozen tasks — a marketing page, a data-dense operating tool, a dashboard and a Flutter screen — and a blind judge on rendered screenshots force the gain to show up in the pixels.
 
-## The three frozen tasks
+## The four frozen tasks
 
 | ID | Task | What it stresses |
 | --- | --- | --- |
 | `T1-brand` | Marketing page for a small sourdough bakery subscription (PT-BR copy) | Subject anchoring, art direction, copy, one bold move, responsive |
 | `T2-product` | Fleet telemetry dashboard, light + dark | Dense data, states, tables, hierarchy, platform craft |
 | `T3-flutter` | Goal-saving app screen in Flutter with empty/loading/error | Platform idioms, theme discipline, text scale, semantics |
+| `T4-ops` | Club-management hub (Football Manager-like) with squad and standings tables plus data reads | Dense tables, chart discipline, numbers that reconcile, light+dark roles |
 
 Full briefs: `eval/tasks/`. Identical text in both arms, every round.
 
@@ -39,6 +40,7 @@ Both arms get the same tools, the same time budget (stated per round), and the s
 ## Deliverables per arm
 
 - Web tasks: `index.html` + `styles.css` (+ `app.js` if needed), no build step, no external network except the fonts declared in the file; screenshots `shot-1440.png`, `shot-390.png` produced by headless Chromium.
+- `T4-ops` additionally: `PLAN.md`, and screenshots at `shot-1440.png` and `shot-1024.png`.
 - Flutter task: the screen as `lib/` + `pubspec.yaml`, plus a rendered screenshot if the toolchain exists; if not, a widget test asserting the three states plus a hand-built spec note. Missing toolchain is recorded, not faked.
 
 ## Judge — blind, screenshots first

@@ -99,6 +99,21 @@ If a delivered surface contains items from this list, it is not done. Fix or jus
 - Hit areas that are the icon's 24dp, not 48dp.
 - Overflow stripes shipped because the developer only tested one device width.
 
+## Data slop
+
+| Pattern | Why it fails |
+| --- | --- |
+| A grid of identical KPI tiles | Everything at the same weight means nothing has weight |
+| Gauge / speedometer / dial | Three numbers of ink to say one number |
+| Donut or pie with 8 slices | Nobody can compare angles; use bars |
+| Sparkline with no reference and no label | A decorative squiggle |
+| Dual Y-axis | Two scales means any two lines can be made to "correlate" |
+| 3D bars, gradient-filled bars | Distorts the encoding the reader is measuring |
+| Zebra stripes at gray-200 | Reads as a table from 2011, and fights the border logic |
+| Centered numeric columns | Destroys the digit alignment that makes scanning possible |
+| Chart inside a card inside a card | Two shadows and two radii for one object |
+| Numbers that do not add up | One contradiction invalidates every other number |
+
 ## When something from this list is correct
 
 Some briefs genuinely need a gradient (an actual light source), a serif (an actual publication), or a carousel (a photo gallery with no primary item). In those cases:

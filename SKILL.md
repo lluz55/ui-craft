@@ -32,6 +32,7 @@ Then load, in this order and never all at once:
 2. `reference/web.md` or `reference/flutter.md` — the platform you are actually editing;
 3. the command's reference section below;
 4. tables from `reference/` only when the task needs them (`styles.md`, `fonts.md`, `palettes.md`, `anti-patterns.md`);
+   if the surface carries tables, charts or numbers, `reference/data.md` is mandatory — on a data surface, legibility outranks composition;
 5. `reference/verify.md` before you claim anything about how it looks;
 6. `reference/craft-floor.md` immediately before delivering.
 
@@ -108,6 +109,7 @@ Stop here and show the plan when the surface is large, the brand is contested, o
 4. Then states, in this order: empty → loading → error → success → disabled.
 5. Then the platform layer (`reference/web.md` / `reference/flutter.md`): focus rings, keyboard, semantics, tap targets, safe areas, reduced motion, theme variants.
 6. Reject your own first instinct once: after the first pass renders, name the two most "default-looking" elements and either justify or replace them.
+7. If the surface carries numbers, build with `reference/data.md` open, not as a later polish: column alignment and units, reconciliation between views, and a stated reference for every chart.
 
 Rules of thumb that survive both platforms:
 
@@ -189,6 +191,7 @@ An empty "Not verified" is suspicious. If you did not open the render, it is not
 | `reference/palettes.md` | Named palettes by product type, with roles |
 | `reference/anti-patterns.md` | The rejection list, web + Flutter specific |
 | `reference/critique.md` | Rubric, axes, killer questions |
+| `reference/data.md` | Tables, charts, KPI tiles, dashboards, dense-tool primitives — the professional-surface floor |
 | `reference/audit.md` | Mechanical checklist per platform |
 | `reference/verify.md` | Sighted vs blind verification paths, `scripts/shot.mjs` usage, what each may claim |
 | `reference/craft-floor.md` | The floor: pass/fail items before delivery |

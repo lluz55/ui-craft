@@ -73,6 +73,7 @@ reference/
   palettes.md             named palettes by product type, with roles and contrast rules
   anti-patterns.md        the rejection list (web + Flutter)
   critique.md             the rubric, the three lenses, evidence rules
+  data.md                 tables, charts, KPI tiles, dashboards, dense-tool floor
   audit.md                mechanical checks, per platform, `file:line` output
   craft-floor.md          the pass/fail gate read before delivering
   verify.md               sighted vs blind verification, and what each may claim
@@ -80,7 +81,7 @@ reference/
 eval/
   PROTOCOL.md             frozen tasks, A/B arms, blind judge, direction, threshold
   JUDGE.md                the judge's rubric and output contract
-  tasks/                  T1-brand, T2-product, T3-flutter
+  tasks/                  T1-brand, T2-product, T3-flutter, T4-ops
 research/                 the five source skills, what was taken, what was rejected, decisions
 scripts/shot.mjs          zero-dependency render + screenshot + layout audit (CDP)
 scripts/shot.sh           minimal chromium screenshot helper (no metrics)
@@ -89,7 +90,7 @@ runs/                     one directory per eval round (A, B, judge, KEY.txt, ve
 
 ## Evaluation
 
-The skill is validated, not asserted. Three frozen tasks (a bakery subscription page, a fleet telemetry dashboard, a Flutter savings screen) are built twice in clean contexts — with and without the skill — and a blind judge scores the screenshots and code without knowing which arm used the skill. The orchestrator applies direction with `KEY.txt`.
+The skill is validated, not asserted. Four frozen tasks (a bakery subscription page, a fleet telemetry dashboard, a club-management hub, a Flutter savings screen) are built twice in clean contexts — with and without the skill — and a blind judge scores the screenshots and code without knowing which arm used the skill. The orchestrator applies direction with `KEY.txt`.
 
 Pass threshold: `improvement_magnitude >= 7.0`.
 

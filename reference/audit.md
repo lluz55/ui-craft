@@ -28,6 +28,12 @@ focus order, font loading, computed contrast). Then audit the rest by reading co
 | Long content: 3× text, longest number, unbroken string | Clipped text, horizontal scroll |
 | Smallest viewport: 320px web / 360dp Flutter | Overflow stripes, cut-off controls |
 | Zoom / text scale: 200% web / 2.0 Flutter | Overlap, hidden actions |
+| Numeric columns right-aligned with tabular-nums | Numbers centered or jittering between rows |
+| Every table column names its unit | The reader guesses whether 12 is goals or games |
+| Numbers reconcile across views | Squad goals ≠ standings goals; points ≠ 3W + D |
+| Chart has axis labels, a unit and a reference | A decorated line nobody can read |
+| Chart survives grayscale | Series told apart only by hue |
+| Table scrolls inside its own container | The page scrolls sideways at 1024px |
 | Destructive actions confirm with context | "Are you sure?" with no object named |
 | Reduced motion respected | Parallax/transform still runs |
 | Numbers tabular where aligned | Prices in proportional figures |
