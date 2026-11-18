@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+runs/*/A/node_modules/
+runs/*/B/node_modules/
