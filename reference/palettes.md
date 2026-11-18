@@ -112,6 +112,13 @@ saturated colour (Bottomley & Doyle, 2006). So the question is not "which palett
    next one is White room, Dark first, Saturated field or Duotone. Write one line saying which.
 3. **If you catch yourself at warm paper + near-black + one muted accent**, you have arrived at the
    cream-paper tell. Name the reason, or switch.
+4. **Vary the value, not only the hue.** Measured on three briefing runs of this skill with the
+   strategy table already in place: the surfaces came out at lightness 87%, 94% and 93% — the tint
+   changed (44°, 70°, 90°) while every page stayed a pale plane. Hue variety reads as variety to
+   the person writing the CSS and not to the person looking at three screenshots side by side.
+   If the last surfaces you built all had a lightness above 85%, the next one is **Dark first**,
+   **Saturated field** or a mid-tone **Duotone** — the strategy table is indexed by chroma and
+   value, so use both columns.
 
 ## Adjusting a palette
 

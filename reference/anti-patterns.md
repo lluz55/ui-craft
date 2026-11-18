@@ -8,6 +8,7 @@ If a delivered surface contains items from this list, it is not done. Fix or jus
 - Cream `#F4F1EA` + display serif + terracotta `#D97757`, in that exact combination.
 - **The cream-paper cousin**: warm off-white surface (hue 40–55°, lightness 88–94°) + near-black ink + one muted accent + hairline rules, no shadows. It is not on the default-kit list, which is exactly why it feels like a decision. Name the reason or change strategy (`reference/palettes.md`).
 - The same palette family twice in a row across unrelated projects: paper, paper, paper again.
+- **Hue variety without value variety**: three surfaces at 12°, 70° and 90° that all sit at 90%+ lightness. Different tints of the same pale plane is still one palette (`reference/palettes.md`, repetition rule 4).
 - Near-black page + acid green or vermilion accent, used as a personality substitute.
 - Purple-to-blue gradient on a hero or a button. Any gradient used as decoration rather than light or material.
 - Glassmorphism over a background that carries no information.

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrato — Mesa · Banco Farol</title>
+<meta name="description" content="Dossiê do contrato em atraso: composição do débito, pagamentos, simulador de acordo e histórico de contato.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contrato">
+<a class="skip" href="#dossier">Pular para o contrato</a>
+
+<header class="rail">
+  <div class="wrap rail-in">
+    <div class="brand">
+      <span class="brand-word">Mesa</span>
+      <span class="brand-bank">Banco Farol · cobrança</span>
+    </div>
+    <nav aria-label="Seções">
+      <a href="fila.html">Fila</a>
+      <a href="contrato.html?ctr=CTR-4821" aria-current="page">Contrato</a>
+      <a href="carta.html?ctr=CTR-4821">Carta</a>
+    </nav>
+    <div class="rail-tools">
+      <button class="btn-quiet" type="button" id="cmdBtn" aria-label="Abrir paleta de comandos" title="Paleta de comandos (Ctrl+K)">⌘K</button>
+      <button class="btn-quiet" type="button" id="themeBtn" aria-label="Mudar para tema escuro" title="Mudar para tema escuro">escuro</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap page" id="dossier">
+  <p class="crumb"><a href="fila.html">Fila</a> <span aria-hidden="true">/</span> <span id="crumbCtr">contrato</span></p>
+
+  <div class="dossier">
+    <div>
+      <div class="ident">
+        <h1 id="cliNome"><span class="sk-bar sk-title" aria-hidden="true"></span></h1>
+        <span id="cliChip"></span>
+        <a class="btn" id="linkCarta" href="carta.html?ctr=CTR-4821">Carta de cobrança</a>
+      </div>
+      <p class="ident-meta" id="cliMeta"></p>
+
+      <section class="panel" aria-labelledby="compTitle">
+        <div class="panel-head">
+          <h2 id="compTitle">Composição do débito</h2>
+          <span class="meta">valores do core, em reais</span>
+        </div>
+        <div class="sk-comp" aria-hidden="true">
+          <div class="sk-row sk-row-comp"><span class="sk-bar w70"></span><span class="sk-bar w40"></span></div>
+          <div class="sk-row sk-row-comp"><span class="sk-bar w50"></span><span class="sk-bar w40"></span></div>
+          <div class="sk-row sk-row-comp"><span class="sk-bar w70"></span><span class="sk-bar w40"></span></div>
+        </div>
+        <table class="comp" id="composicao" aria-busy="true"></table>
+        <div class="divbox" id="divBox" hidden></div>
+      </section>
+
+      <section class="panel" aria-labelledby="payTitle">
+        <div class="panel-head">
+          <h2 id="payTitle">Pagamentos recebidos</h2>
+          <span class="meta">extrato do contrato</span>
+        </div>
+        <div id="historico"><p class="panel-empty">Lendo o extrato do core…</p></div>
+      </section>
+
+      <section class="panel" aria-labelledby="notesTitle">
+        <div class="panel-head">
+          <h2 id="notesTitle">Contato</h2>
+          <span class="meta" id="notaCount">—</span>
+        </div>
+        <div id="notas"><p class="panel-empty">Lendo o histórico de contato…</p></div>
+
+        <form class="nota-form" id="notaForm" novalidate>
+          <label for="nota">Novo registro de contato</label>
+          <textarea id="nota" name="nota" rows="3" placeholder="O que foi conversado, com quem, e o que ficou combinado." aria-describedby="notaDica notaErro"></textarea>
+          <p class="nota-dica" id="notaDica">Fica no histórico deste contrato e entra no último contato da fila nesta sessão.</p>
+          <p class="form-error" id="notaErro" role="alert" hidden></p>
+          <div class="nota-actions">
+            <button class="btn btn-primary" type="submit">Registrar contato</button>
+            <span class="nota-min">mínimo de 4 caracteres</span>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <aside class="side">
+      <div id="simWrap" class="sim-stack">
+        <section class="sim" aria-labelledby="simTitle">
+          <h2 id="simTitle">Simulador de acordo</h2>
+          <p class="sim-sub">O desconto incide só sobre os juros em aberto.</p>
+
+          <fieldset class="seg" id="simFieldset">
+            <legend>Parcelas</legend>
+            <div class="seg-in">
+              <label><input type="radio" name="parcelas" value="1" checked><span>1×</span></label>
+              <label><input type="radio" name="parcelas" value="3"><span>3×</span></label>
+              <label><input type="radio" name="parcelas" value="6"><span>6×</span></label>
+              <label><input type="radio" name="parcelas" value="12"><span>12×</span></label>
+            </div>
+          </fieldset>
+
+          <div class="desc-range">
+            <div class="row">
+              <label class="field-label" for="desconto">Desconto sobre juros</label>
+              <output id="descOut" for="desconto">—</output>
+            </div>
+            <input type="range" id="desconto" min="0" max="60" step="1" value="30">
+          </div>
+
+          <div class="sim-out">
+            <p class="label" id="parcelaLabel">Parcela</p>
+            <p class="sim-amount" id="parcela" aria-labelledby="parcelaLabel">—</p>
+            <p class="sim-sub2" id="parcelaSub"></p>
+            <dl class="sim-lines">
+              <div><dt>Total do acordo</dt><dd id="totalAcordo">—</dd></div>
+              <div><dt>Desconto concedido</dt><dd id="economia">—</dd></div>
+            </dl>
+          </div>
+
+          <button class="btn btn-primary" type="button" id="btnAcordo">Registrar acordo</button>
+          <p id="simRule" class="sim-rule"></p>
+          <p id="simIntegridade" class="sim-integridade" hidden>Contrato encerrado como prejuízo: o simulador fica bloqueado e o saldo não pode ser renegociado.</p>
+        </section>
+
+        <section class="danger-zone" aria-labelledby="riskTitle">
+          <h2 id="riskTitle">Encerrar como prejuízo</h2>
+          <p>Baixa o saldo sem acordo. A ação entra no histórico deste contrato e tem 8 segundos de desfazer.</p>
+          <button class="btn btn-danger" type="button" id="btnEncerrar">Encerrar contrato…</button>
+          <div id="endBanner" class="end-banner" hidden></div>
+        </section>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>Mesa · Banco Farol — cobrança administrativa</span>
+    <span class="dot" aria-hidden="true">·</span>
+    <span>Valores do core em 20/10. Nenhum cálculo desta tela altera o core.</span>
+    <span class="dot" aria-hidden="true">·</span>
+    <span>Sessão de <span class="js-date"></span> · <span class="js-clock"></span></span>
+  </div>
+</footer>
+
+<dialog id="endDialog" aria-labelledby="endTitle">
+  <form class="dialog-body" id="endForm">
+    <p class="error-kicker">Ação irreversível</p>
+    <h2 class="dialog-title" id="endTitle">Encerrar como prejuízo?</h2>
+    <p class="dialog-name" id="endNome"></p>
+    <p class="dialog-value" id="endValor"></p>
+    <p class="dialog-text" id="endDetalhe"></p>
+    <div class="dialog-actions">
+      <button class="btn" type="button" id="endCancel">Cancelar</button>
+      <button class="btn btn-danger" type="submit">Encerrar como prejuízo</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="cmd" aria-label="Paleta de comandos">
+  <div class="cmd-box">
+    <input id="cmdInput" type="text" role="combobox" aria-expanded="true" aria-controls="cmdList" aria-autocomplete="list" autocomplete="off" spellcheck="false" placeholder="Buscar comando">
+    <ul id="cmdList" role="listbox" aria-label="Comandos"></ul>
+    <div class="cmd-foot">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> navegam</span>
+      <span><kbd>Enter</kbd> executa</span>
+      <span><kbd>Esc</kbd> fecha</span>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="app.js"></script>
+</body>
+</html>

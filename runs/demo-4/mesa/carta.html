@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carta de cobrança — Mesa · Banco Farol</title>
+<meta name="description" content="Carta de cobrança administrativa do Banco Farol, em uma página A4.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="carta" class="carta-page">
+
+<div class="wrap printbar">
+  <a href="contrato.html?ctr=CTR-4821" id="voltar">← Voltar ao contrato</a>
+  <span class="mono printbar-note">A4 · 210 × 297 mm · 1 página</span>
+  <span class="spacer"></span>
+  <button class="btn" type="button" id="imprimir">Imprimir / PDF</button>
+</div>
+
+<main class="wrap">
+  <article class="sheet" id="carta" aria-label="Carta de cobrança do contrato">
+    <header class="sheet-head">
+      <div class="sheet-brand">Banco Farol<span>Cobrança administrativa · Recife</span></div>
+      <div class="sheet-ref">
+        Carta de cobrança<br>
+        Contrato <span class="js-contrato">—</span><br>
+        Página 1 de 1
+      </div>
+    </header>
+
+    <div class="sheet-meta">
+      <div>
+        <p class="sheet-label">Destinatário</p>
+        <p class="dest-name js-cliente">—</p>
+        <p class="dest-line">Titular do contrato <span class="js-contrato">—</span></p>
+        <p class="dest-line">Vencimento original em <span class="js-venceu">—</span> · <span class="js-dias">—</span> dias em atraso</p>
+      </div>
+      <p class="sheet-date js-hoje">—</p>
+    </div>
+
+    <h1 class="sheet-title">Notificação de débito em atraso</h1>
+
+    <div class="sheet-body">
+      <p>Prezado(a) <span class="js-cliente">—</span>,</p>
+      <p>Não identificamos o pagamento do valor abaixo até a data de vencimento do contrato <span class="js-contrato">—</span>. Os encargos foram calculados conforme a regra registrada no contrato e estão discriminados para conferência.</p>
+    </div>
+
+    <table class="sheet-table">
+      <caption class="sr-only">Composição do valor devido do contrato</caption>
+      <thead>
+        <tr><th scope="col">Composição do valor devido</th><th scope="col" class="ta-r">Valor</th></tr>
+      </thead>
+      <tbody id="cartaValores"></tbody>
+    </table>
+
+    <p class="sheet-conferencia" id="cartaDiv" hidden></p>
+
+    <div class="sheet-cols">
+      <section class="sheet-box" aria-labelledby="prazoTitle">
+        <h2 id="prazoTitle">Prazo</h2>
+        <p class="prazo-valor">10 dias corridos</p>
+        <p>contados do recebimento desta carta. O pagamento até essa data evita nova atualização de juros e multa sobre o saldo.</p>
+      </section>
+      <section class="sheet-box" aria-labelledby="canaisTitle">
+        <h2 id="canaisTitle">Canais de pagamento</h2>
+        <p>PIX: <strong>cobranca@bancofarol.com.br</strong></p>
+        <p>Boleto: solicite na central de cobrança, 0800 591 2020, de segunda a sexta, 9h às 18h.</p>
+        <p>Não aceitamos pagamento por depósito sem identificação do contrato.</p>
+      </section>
+    </div>
+
+    <div class="sheet-body sheet-body-last">
+      <p>Se o pagamento já foi feito nos últimos dias, desconsidere esta carta e envie o comprovante para a central de cobrança. Havendo acordo em andamento, ele prevalece sobre o valor desta notificação.</p>
+    </div>
+
+    <footer class="sheet-foot">
+      <p class="sheet-sign">Central de cobrança — Banco Farol</p>
+      <p class="sheet-small">Documento gerado a partir do contrato <span class="js-contrato">—</span> para fins de demonstração. A composição do débito é registrada pelo core do Banco Farol; a conferência de encargos fica disponível no dossiê do contrato.</p>
+      <div class="sheet-pages"><span>Banco Farol · cobrança administrativa</span><span>1 / 1</span></div>
+    </footer>
+  </article>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
