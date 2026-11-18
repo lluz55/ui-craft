@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Hub do clube · Atlético Boa Vista</title>
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Pular para o conteúdo</a>
+
+<div class="app">
+
+  <header class="ident">
+    <svg class="crest crest-club" viewBox="0 0 44 52" role="img" aria-labelledby="crest-title">
+      <title id="crest-title">Escudo do Atlético Boa Vista</title>
+      <path d="M22 1.5 42.5 8v19.5c0 11.4-9.4 19.2-20.5 23.1C10.9 46.7 1.5 38.9 1.5 27.5V8Z" fill="var(--accent)" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M22 5.4 38.7 10.5v16.4c0 9.3-7.6 15.7-16.7 19.1-9.1-3.4-16.7-9.8-16.7-19.1V10.5Z" fill="none" stroke="var(--accent-ink)" stroke-opacity=".5" stroke-width=".9"/>
+      <path d="M22 9.4l1.2 2.6 2.9.4-2.1 2 .5 2.9-2.5-1.4-2.5 1.4.5-2.9-2.1-2 2.9-.4z" fill="var(--accent-ink)"/>
+      <text x="22" y="26.6" text-anchor="middle" font-family="Fira Sans Condensed, sans-serif" font-size="10.5" font-weight="700" letter-spacing=".6" fill="var(--accent-ink)">ABV</text>
+      <path d="M8.5 33.4c3.4-2.2 6.9-2.2 10.3 0s6.9 2.2 10.3 0 6.4-2 8.9-.4" fill="none" stroke="var(--accent-ink)" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M8.5 38.2c3.4-2.2 6.9-2.2 10.3 0s6.9 2.2 10.3 0 6.4-2 8.9-.4" fill="none" stroke="var(--accent-ink)" stroke-width="1.1" stroke-linecap="round" opacity=".7"/>
+      <path d="M12 42.6h20" stroke="var(--accent-ink)" stroke-width=".8" opacity=".4"/>
+    </svg>
+
+    <div class="ident-name">
+      <h1>Atlético Boa Vista</h1>
+      <p class="ident-sub">Série B · 2026 <span class="dot">·</span> Recife, PE</p>
+    </div>
+
+    <dl class="ident-facts">
+      <div><dt>Posição</dt><dd>4<sup>º</sup></dd></div>
+      <div><dt>Pontos</dt><dd>42</dd></div>
+      <div><dt>Rodada</dt><dd>24<small>/38</small></dd></div>
+      <div><dt>Jogos</dt><dd>23</dd></div>
+      <div class="fact-next"><dt>Próximo</dt><dd>Náutico <small>em 3 dias</small></dd></div>
+    </dl>
+
+    <button class="theme-btn" id="theme-btn" type="button" aria-pressed="false">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 .8v2M8 13.2v2M.8 8h2M13.2 8h2M2.9 2.9l1.4 1.4M11.7 11.7l1.4 1.4M13.1 2.9l-1.4 1.4M4.3 11.7l-1.4 1.4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+      <span class="theme-lbl">Tema escuro</span>
+    </button>
+  </header>
+
+  <main id="main" class="board">
+
+    <div class="col col-main">
+
+      <!-- 01 · PRÓXIMO JOGO -->
+      <section class="panel" aria-labelledby="h-match">
+        <header class="panel-head">
+          <h2 id="h-match">Próximo jogo</h2>
+          <p class="panel-meta">Rodada 24 <span class="dot">·</span> Série B</p>
+        </header>
+
+        <div class="match">
+          <div class="team team-home">
+            <svg class="crest crest-sm" viewBox="0 0 44 52" aria-hidden="true" focusable="false">
+              <path d="M22 1.5 42.5 8v19.5c0 11.4-9.4 19.2-20.5 23.1C10.9 46.7 1.5 38.9 1.5 27.5V8Z" fill="var(--accent)"/>
+              <path d="M24 12l1 2.2 2.4.3-1.7 1.7.4 2.4-2.1-1.2-2.1 1.2.4-2.4-1.7-1.7 2.4-.3z" fill="var(--accent-ink)"/>
+            </svg>
+            <div>
+              <p class="team-name">Atlético Boa Vista</p>
+              <p class="team-tag">Mando de campo</p>
+            </div>
+          </div>
+
+          <div class="match-mid">
+            <p class="match-day">sáb <span>21/11</span></p>
+            <p class="match-time">20h30</p>
+            <p class="match-vs" aria-hidden="true">×</p>
+          </div>
+
+          <div class="team team-away">
+            <span class="opp-badge" aria-hidden="true">N</span>
+            <div>
+              <p class="team-name">Náutico</p>
+              <p class="team-tag">5º colocado <span class="dot">·</span> 40 pts</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="match-meta">Estádio Rui Frazão <span class="dot">·</span> gramado natural
+          <span class="dot">·</span> 4º × 5º, dois pontos de distância</p>
+
+        <div class="avail">
+          <div class="avail-group">
+            <h3><span class="mk mk-bad" aria-hidden="true"></span>Suspensos <span class="count">2</span></h3>
+            <ul>
+              <li><span class="who">Caio Bertoldo</span> <span class="pos">VOL</span><span class="why">vermelho na R23</span></li>
+              <li><span class="who">Renan Quirino</span> <span class="pos">LAT</span><span class="why">3º amarelo</span></li>
+            </ul>
+          </div>
+          <div class="avail-group">
+            <h3><span class="mk mk-ok" aria-hidden="true"></span>Voltam <span class="count">2</span></h3>
+            <ul>
+              <li><span class="who">Pedro Lins</span> <span class="pos">MEI</span><span class="why">liberado pelo DM</span></li>
+              <li><span class="who">Douglas Paiva</span> <span class="pos">LAT</span><span class="why">sem restrição</span></li>
+            </ul>
+          </div>
+          <div class="avail-group">
+            <h3><span class="mk mk-doubt" aria-hidden="true"></span>Em dúvida <span class="count">2</span></h3>
+            <ul>
+              <li><span class="who">Rodrigo Viana</span> <span class="pos">ATA</span><span class="why">coxa, 70%</span></li>
+              <li><span class="who">Ítalo Menezes</span> <span class="pos">ZAG</span><span class="why">tornozelo, 82%</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02 · FORMA + 03 · GOLS POR TEMPO -->
+      <div class="pair">
+
+        <section class="panel panel-form" aria-labelledby="h-form">
+          <header class="panel-head">
+            <h2 id="h-form">Forma</h2>
+            <p class="panel-meta">últimos 5 <span class="dot">·</span> 10 de 15 pontos</p>
+          </header>
+          <ol class="form-strip">
+            <li class="fg fg-w"><span class="fg-res">V</span><span class="fg-opp">AVA</span><span class="fg-score">2–1</span></li>
+            <li class="fg fg-d"><span class="fg-res">E</span><span class="fg-opp">CRB</span><span class="fg-score">1–1</span></li>
+            <li class="fg fg-w"><span class="fg-res">V</span><span class="fg-opp">PAY</span><span class="fg-score">3–0</span></li>
+            <li class="fg fg-l"><span class="fg-res">D</span><span class="fg-opp">SPT</span><span class="fg-score">0–2</span></li>
+            <li class="fg fg-w"><span class="fg-res">V</span><span class="fg-opp">VIL</span><span class="fg-score">2–1</span></li>
+          </ol>
+          <div class="meter-row">
+            <p class="meter-label">Aproveitamento na competição</p>
+            <p class="meter-value">60,9<small>%</small></p>
+          </div>
+          <div class="meter" role="img" aria-label="Aproveitamento de 60,9 por cento: 42 de 69 pontos">
+            <span class="meter-fill" style="--v:60.9%"></span>
+            <span class="meter-tick" aria-hidden="true"></span>
+          </div>
+          <p class="foot-note">42 pontos em 69 disputados <span class="dot">·</span> 12V 6E 5D</p>
+        </section>
+
+        <section class="panel panel-goals" aria-labelledby="h-goals">
+          <header class="panel-head">
+            <h2 id="h-goals">Gols por tempo</h2>
+            <p class="panel-meta">34 marcados</p>
+          </header>
+          <div class="bars" role="img" aria-label="Gols marcados por faixa de tempo: 4 até 15, 6 de 16 a 30, 5 de 31 a 45, 5 de 46 a 60, 7 de 61 a 75, 7 de 76 a 90">
+            <div class="bar"><span class="bar-v">4</span><span class="bar-fill" style="--v:57%"></span><span class="bar-x">0–15</span></div>
+            <div class="bar"><span class="bar-v">6</span><span class="bar-fill" style="--v:86%"></span><span class="bar-x">16–30</span></div>
+            <div class="bar"><span class="bar-v">5</span><span class="bar-fill" style="--v:71%"></span><span class="bar-x">31–45</span></div>
+            <div class="bar"><span class="bar-v">5</span><span class="bar-fill" style="--v:71%"></span><span class="bar-x">46–60</span></div>
+            <div class="bar bar-peak"><span class="bar-v">7</span><span class="bar-fill" style="--v:100%"></span><span class="bar-x">61–75</span></div>
+            <div class="bar bar-peak"><span class="bar-v">7</span><span class="bar-fill" style="--v:100%"></span><span class="bar-x">76–90</span></div>
+          </div>
+          <p class="foot-note"><strong>19</strong> dos 34 gols saem no 2º tempo <span class="dot">·</span> 15 no 1º</p>
+        </section>
+      </div>
+
+      <!-- 07 · ELENCO -->
+      <section class="panel panel-squad" aria-labelledby="h-squad">
+        <header class="panel-head">
+          <h2 id="h-squad">Elenco</h2>
+          <p class="panel-meta">18 jogadores <span class="dot">·</span> 34 gols <span class="dot">·</span> 49 CA <span class="dot">·</span> 2 CV</p>
+        </header>
+
+        <div class="squad-tools">
+          <div class="search">
+            <label class="sr-only" for="q">Buscar jogador</label>
+            <input id="q" type="search" placeholder="Buscar jogador" autocomplete="off" spellcheck="false">
+            <kbd aria-hidden="true">/</kbd>
+          </div>
+          <div class="chips" role="group" aria-label="Filtrar por posição">
+            <button type="button" class="chip" data-group="all" aria-pressed="true">Todas</button>
+            <button type="button" class="chip" data-group="gol" aria-pressed="false">Goleiros</button>
+            <button type="button" class="chip" data-group="def" aria-pressed="false">Defesa</button>
+            <button type="button" class="chip" data-group="mei" aria-pressed="false">Meio</button>
+            <button type="button" class="chip" data-group="ata" aria-pressed="false">Ataque</button>
+          </div>
+          <p class="squad-count" id="squad-count" aria-live="polite">18 jogadores</p>
+        </div>
+
+        <div class="table-wrap" role="region" aria-label="Tabela do elenco, 11 colunas" tabindex="0">
+          <table class="squad">
+            <caption class="sr-only">Elenco do Atlético Boa Vista: número, jogador, posição, idade, jogos, gols, cartões, nota média, condição física, contrato e situação para a rodada 24.</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="c-num"><span class="sr-only">Camisa</span><span aria-hidden="true">#</span></th>
+                <th scope="col" class="c-name" aria-sort="none"><button class="sort" type="button" data-key="name">Jogador <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-pos"><span class="sr-only">Posição</span><span aria-hidden="true">Pos</span></th>
+                <th scope="col" class="c-age" aria-sort="none"><button class="sort" type="button" data-key="age">Idade <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-num" aria-sort="none"><button class="sort" type="button" data-key="j">J <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-num" aria-sort="none"><button class="sort" type="button" data-key="g">G <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-cards"><span class="sr-only">Cartões, amarelos e vermelhos</span><span aria-hidden="true">CA·CV</span></th>
+                <th scope="col" class="c-note" aria-sort="none"><button class="sort" type="button" data-key="note">Nota <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-cond" aria-sort="none"><button class="sort" type="button" data-key="cond">Cond. <span class="caret" aria-hidden="true"></span></button></th>
+                <th scope="col" class="c-contract"><span class="sr-only">Contrato até</span><span aria-hidden="true">Contr.</span></th>
+                <th scope="col" class="c-status">Situação</th>
+              </tr>
+            </thead>
+            <tbody id="squad-body">
+
+              <tr data-group="gol" data-status="ok" data-name="Heitor Sales" data-age="31" data-j="23" data-g="0" data-note="6.9" data-cond="96">
+                <th scope="row" class="c-num">1</th>
+                <td class="c-name">Heitor Sales</td>
+                <td class="c-pos">GOL</td><td class="c-age">31</td><td class="c-num">23</td><td class="c-num">0</td>
+                <td class="c-cards">2<span class="sep">·</span>0</td>
+                <td class="c-note">6,9</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:96%"></span>96%</td>
+                <td class="c-contract">2027</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="gol" data-status="ok" data-name="Nivaldo Reis" data-age="24" data-j="0" data-g="0" data-note="0" data-cond="100">
+                <th scope="row" class="c-num">12</th>
+                <td class="c-name">Nivaldo Reis</td>
+                <td class="c-pos">GOL</td><td class="c-age">24</td><td class="c-num">0</td><td class="c-num">0</td>
+                <td class="c-cards">0<span class="sep">·</span>0</td>
+                <td class="c-note"><span class="dash">—</span></td>
+                <td class="c-cond"><span class="cond-bar" style="--v:100%"></span>100%</td>
+                <td class="c-contract">2028</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="def" data-status="ok" data-name="Otávio Braga" data-age="29" data-j="22" data-g="2" data-note="7.1" data-cond="88">
+                <th scope="row" class="c-num">4</th>
+                <td class="c-name">Otávio Braga <span class="captain" title="Capitão">C</span></td>
+                <td class="c-pos">ZAG</td><td class="c-age">29</td><td class="c-num">22</td><td class="c-num">2</td>
+                <td class="c-cards">5<span class="sep">·</span>1</td>
+                <td class="c-note">7,1</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:88%"></span>88%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="def" data-status="ok" data-name="Wesley Pontes" data-age="26" data-j="21" data-g="1" data-note="7.0" data-cond="92">
+                <th scope="row" class="c-num">3</th>
+                <td class="c-name">Wesley Pontes</td>
+                <td class="c-pos">ZAG</td><td class="c-age">26</td><td class="c-num">21</td><td class="c-num">1</td>
+                <td class="c-cards">4<span class="sep">·</span>0</td>
+                <td class="c-note">7,0</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:92%"></span>92%</td>
+                <td class="c-contract">2027</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="def" data-status="duvida" data-name="Ítalo Menezes" data-age="22" data-j="9" data-g="0" data-note="6.6" data-cond="82">
+                <th scope="row" class="c-num">14</th>
+                <td class="c-name">Ítalo Menezes</td>
+                <td class="c-pos">ZAG</td><td class="c-age">22</td><td class="c-num">9</td><td class="c-num">0</td>
+                <td class="c-cards">2<span class="sep">·</span>0</td>
+                <td class="c-note">6,6</td>
+                <td class="c-cond"><span class="cond-bar low" style="--v:82%"></span>82%</td>
+                <td class="c-contract">2029</td>
+                <td class="c-status"><span class="badge b-doubt">Dúvida</span></td>
+              </tr>
+
+              <tr data-group="def" data-status="suspenso" data-name="Renan Quirino" data-age="27" data-j="22" data-g="1" data-note="7.0" data-cond="74">
+                <th scope="row" class="c-num">6</th>
+                <td class="c-name">Renan Quirino</td>
+                <td class="c-pos">LAT</td><td class="c-age">27</td><td class="c-num">22</td><td class="c-num">1</td>
+                <td class="c-cards">6<span class="sep">·</span>0</td>
+                <td class="c-note">7,0</td>
+                <td class="c-cond"><span class="cond-bar low" style="--v:74%"></span>74%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="badge b-out">Suspenso</span></td>
+              </tr>
+
+              <tr data-group="def" data-status="retorna" data-name="Douglas Paiva" data-age="23" data-j="17" data-g="0" data-note="6.8" data-cond="90">
+                <th scope="row" class="c-num">2</th>
+                <td class="c-name">Douglas Paiva</td>
+                <td class="c-pos">LAT</td><td class="c-age">23</td><td class="c-num">17</td><td class="c-num">0</td>
+                <td class="c-cards">3<span class="sep">·</span>0</td>
+                <td class="c-note">6,8</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:90%"></span>90%</td>
+                <td class="c-contract">2028</td>
+                <td class="c-status"><span class="badge b-in">Retorna</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="suspenso" data-name="Caio Bertoldo" data-age="28" data-j="23" data-g="2" data-note="7.2" data-cond="84">
+                <th scope="row" class="c-num">5</th>
+                <td class="c-name">Caio Bertoldo</td>
+                <td class="c-pos">VOL</td><td class="c-age">28</td><td class="c-num">23</td><td class="c-num">2</td>
+                <td class="c-cards">7<span class="sep">·</span>1</td>
+                <td class="c-note">7,2</td>
+                <td class="c-cond"><span class="cond-bar low" style="--v:84%"></span>84%</td>
+                <td class="c-contract">2027</td>
+                <td class="c-status"><span class="badge b-out">Suspenso</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="ok" data-name="Lucas Andrade" data-age="25" data-j="20" data-g="1" data-note="6.9" data-cond="95">
+                <th scope="row" class="c-num">8</th>
+                <td class="c-name">Lucas Andrade</td>
+                <td class="c-pos">VOL</td><td class="c-age">25</td><td class="c-num">20</td><td class="c-num">1</td>
+                <td class="c-cards">5<span class="sep">·</span>0</td>
+                <td class="c-note">6,9</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:95%"></span>95%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="ok" data-name="Matheus Rangel" data-age="21" data-j="8" data-g="0" data-note="6.5" data-cond="100">
+                <th scope="row" class="c-num">16</th>
+                <td class="c-name">Matheus Rangel</td>
+                <td class="c-pos">VOL</td><td class="c-age">21</td><td class="c-num">8</td><td class="c-num">0</td>
+                <td class="c-cards">1<span class="sep">·</span>0</td>
+                <td class="c-note">6,5</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:100%"></span>100%</td>
+                <td class="c-contract">2029</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="ok" data-name="Everton Salles" data-age="30" data-j="22" data-g="5" data-note="7.6" data-cond="81">
+                <th scope="row" class="c-num">10</th>
+                <td class="c-name">Everton Salles</td>
+                <td class="c-pos">MEI</td><td class="c-age">30</td><td class="c-num">22</td><td class="c-num">5</td>
+                <td class="c-cards">3<span class="sep">·</span>0</td>
+                <td class="c-note">7,6</td>
+                <td class="c-cond"><span class="cond-bar low" style="--v:81%"></span>81%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="retorna" data-name="Pedro Lins" data-age="24" data-j="18" data-g="3" data-note="7.1" data-cond="93">
+                <th scope="row" class="c-num">20</th>
+                <td class="c-name">Pedro Lins</td>
+                <td class="c-pos">MEI</td><td class="c-age">24</td><td class="c-num">18</td><td class="c-num">3</td>
+                <td class="c-cards">2<span class="sep">·</span>0</td>
+                <td class="c-note">7,1</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:93%"></span>93%</td>
+                <td class="c-contract">2028</td>
+                <td class="c-status"><span class="badge b-in">Retorna</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="ok" data-name="Thalles Moura" data-age="26" data-j="21" data-g="4" data-note="7.4" data-cond="89">
+                <th scope="row" class="c-num">7</th>
+                <td class="c-name">Thalles Moura</td>
+                <td class="c-pos">ALA</td><td class="c-age">26</td><td class="c-num">21</td><td class="c-num">4</td>
+                <td class="c-cards">2<span class="sep">·</span>0</td>
+                <td class="c-note">7,4</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:89%"></span>89%</td>
+                <td class="c-contract">2027</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="mei" data-status="ok" data-name="Juninho Paraíba" data-age="22" data-j="14" data-g="2" data-note="6.9" data-cond="97">
+                <th scope="row" class="c-num">11</th>
+                <td class="c-name">Juninho Paraíba</td>
+                <td class="c-pos">ALA</td><td class="c-age">22</td><td class="c-num">14</td><td class="c-num">2</td>
+                <td class="c-cards">1<span class="sep">·</span>0</td>
+                <td class="c-note">6,9</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:97%"></span>97%</td>
+                <td class="c-contract">2029</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="ata" data-status="duvida" data-name="Rodrigo Viana" data-age="32" data-j="22" data-g="8" data-note="7.3" data-cond="70">
+                <th scope="row" class="c-num">9</th>
+                <td class="c-name">Rodrigo Viana</td>
+                <td class="c-pos">ATA</td><td class="c-age">32</td><td class="c-num">22</td><td class="c-num strong">8</td>
+                <td class="c-cards">4<span class="sep">·</span>0</td>
+                <td class="c-note">7,3</td>
+                <td class="c-cond"><span class="cond-bar low" style="--v:70%"></span>70%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="badge b-doubt">Dúvida</span></td>
+              </tr>
+
+              <tr data-group="ata" data-status="ok" data-name="Kaio Ferraz" data-age="24" data-j="20" data-g="5" data-note="7.0" data-cond="91">
+                <th scope="row" class="c-num">19</th>
+                <td class="c-name">Kaio Ferraz</td>
+                <td class="c-pos">ATA</td><td class="c-age">24</td><td class="c-num">20</td><td class="c-num">5</td>
+                <td class="c-cards">1<span class="sep">·</span>0</td>
+                <td class="c-note">7,0</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:91%"></span>91%</td>
+                <td class="c-contract">2027</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="ata" data-status="ok" data-name="Vinícius Cabral" data-age="20" data-j="6" data-g="0" data-note="6.4" data-cond="100">
+                <th scope="row" class="c-num">27</th>
+                <td class="c-name">Vinícius Cabral <span class="homegrown" title="Formado na base">base</span></td>
+                <td class="c-pos">ATA</td><td class="c-age">20</td><td class="c-num">6</td><td class="c-num">0</td>
+                <td class="c-cards">0<span class="sep">·</span>0</td>
+                <td class="c-note">6,4</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:100%"></span>100%</td>
+                <td class="c-contract">2030</td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+              <tr data-group="ata" data-status="ok" data-name="Emerson Dutra" data-age="28" data-j="5" data-g="0" data-note="6.3" data-cond="86">
+                <th scope="row" class="c-num">18</th>
+                <td class="c-name">Emerson Dutra</td>
+                <td class="c-pos">ATA</td><td class="c-age">28</td><td class="c-num">5</td><td class="c-num">0</td>
+                <td class="c-cards">1<span class="sep">·</span>0</td>
+                <td class="c-note">6,3</td>
+                <td class="c-cond"><span class="cond-bar" style="--v:86%"></span>86%</td>
+                <td class="c-contract"><span class="expiring" title="Contrato até o fim da temporada">2026</span></td>
+                <td class="c-status"><span class="sr-only">Disponível</span><span class="dash" aria-hidden="true">—</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <div class="empty" id="squad-empty" hidden>
+            <p class="empty-title">Nenhum jogador corresponde a esse filtro.</p>
+            <p class="empty-body">A busca “<span id="empty-q"></span>” não retornou ninguém no elenco de 18. Tente outro nome, número ou posição.</p>
+            <button type="button" class="btn btn-ghost" id="clear-filters">Limpar filtros</button>
+          </div>
+        </div>
+
+        <p class="foot-note">2026 marca contrato até o fim da temporada <span class="dot">·</span> nota = média das últimas 5 atuações</p>
+      </section>
+
+      <!-- 08 · RADAR -->
+      <section class="panel panel-radar" aria-labelledby="h-radar">
+        <header class="panel-head">
+          <h2 id="h-radar">Radar do adversário</h2>
+          <p class="panel-meta">Náutico <span class="dot">·</span> últimos 5</p>
+        </header>
+
+        <div class="radar" id="radar" data-state="error">
+          <div class="radar-error">
+            <span class="err-mark" aria-hidden="true">!</span>
+            <div>
+              <p class="err-title">Não foi possível carregar o radar</p>
+              <p class="err-body">O provedor de estatísticas não respondeu em 10 s. Os dados da tabela continuam atualizados.</p>
+            </div>
+            <button type="button" class="btn" id="radar-retry">Tentar de novo</button>
+          </div>
+
+          <div class="radar-loading" hidden>
+            <p class="sr-only" role="status">Carregando o radar do Náutico…</p>
+            <span class="skl skl-1"></span><span class="skl skl-2"></span><span class="skl skl-3"></span>
+          </div>
+
+          <dl class="radar-data" hidden>
+            <div><dt>Forma</dt><dd>V V E V D</dd></div>
+            <div><dt>Gols pró/contra</dt><dd>7 / 4</dd></div>
+            <div><dt>Posse média</dt><dd>51%</dd></div>
+            <div><dt>Ameaça</dt><dd>lado direito</dd></div>
+          </dl>
+        </div>
+      </section>
+
+    </div>
+
+    <aside class="col col-side" aria-label="Competição, finanças e mensagens">
+
+      <!-- 04 · CLASSIFICAÇÃO -->
+      <section class="panel panel-table" aria-labelledby="h-table">
+        <header class="panel-head">
+          <h2 id="h-table">Classificação</h2>
+          <p class="panel-meta">Série B <span class="dot">·</span> 23 jogos</p>
+        </header>
+
+        <table class="league">
+          <caption class="sr-only">Classificação da Série B após 23 rodadas: o Atlético Boa Vista é o 4º colocado com 42 pontos. As quatro primeiras posições sobem para a Série A; as quatro últimas caem para a Série C.</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="lg-pos"><span class="sr-only">Posição</span><span aria-hidden="true">#</span></th>
+              <th scope="col" class="lg-club">Clube</th>
+              <th scope="col" class="lg-j"><abbr title="Jogos">J</abbr></th>
+              <th scope="col" class="lg-sg"><abbr title="Saldo de gols">SG</abbr></th>
+              <th scope="col" class="lg-pts"><abbr title="Pontos">Pts</abbr></th>
+            </tr>
+          </thead>
+
+          <tbody class="zone-access">
+            <tr class="zone-head"><th colspan="5" scope="colgroup"><span class="zone-arrow" aria-hidden="true">↑</span> G4 · acesso à Série A</th></tr>
+            <tr><td class="lg-pos">1</td><td class="lg-club">Ceará</td><td class="lg-j">23</td><td class="lg-sg">+21</td><td class="lg-pts">47</td></tr>
+            <tr><td class="lg-pos">2</td><td class="lg-club">Sport</td><td class="lg-j">23</td><td class="lg-sg">+16</td><td class="lg-pts">45</td></tr>
+            <tr><td class="lg-pos">3</td><td class="lg-club">Goiás</td><td class="lg-j">23</td><td class="lg-sg">+11</td><td class="lg-pts">43</td></tr>
+            <tr class="club"><td class="lg-pos">4</td><td class="lg-club">Atlético Boa Vista <span class="you">você</span></td><td class="lg-j">23</td><td class="lg-sg">+12</td><td class="lg-pts">42</td></tr>
+          </tbody>
+
+          <tbody class="zone-mid">
+            <tr><td class="lg-pos">5</td><td class="lg-club">Náutico</td><td class="lg-j">23</td><td class="lg-sg">+7</td><td class="lg-pts">40</td></tr>
+            <tr><td class="lg-pos">6</td><td class="lg-club">Avaí</td><td class="lg-j">23</td><td class="lg-sg">+5</td><td class="lg-pts">38</td></tr>
+            <tr><td class="lg-pos">7</td><td class="lg-club">CRB</td><td class="lg-j">23</td><td class="lg-sg">+1</td><td class="lg-pts">36</td></tr>
+            <tr><td class="lg-pos">8</td><td class="lg-club">Vila Nova</td><td class="lg-j">23</td><td class="lg-sg">0</td><td class="lg-pts">34</td></tr>
+            <tr class="lg-gap"><td colspan="5">9º a 16º <span aria-hidden="true">·</span> 8 clubes fora do corte</td></tr>
+          </tbody>
+
+          <tbody class="zone-drop">
+            <tr class="zone-head"><th colspan="5" scope="colgroup"><span class="zone-arrow" aria-hidden="true">↓</span> Z4 · rebaixamento à Série C</th></tr>
+            <tr><td class="lg-pos">17</td><td class="lg-club">Novorizontino</td><td class="lg-j">23</td><td class="lg-sg">−14</td><td class="lg-pts">22</td></tr>
+            <tr><td class="lg-pos">18</td><td class="lg-club">Amazonas</td><td class="lg-j">23</td><td class="lg-sg">−17</td><td class="lg-pts">20</td></tr>
+            <tr><td class="lg-pos">19</td><td class="lg-club">Operário</td><td class="lg-j">23</td><td class="lg-sg">−22</td><td class="lg-pts">18</td></tr>
+            <tr><td class="lg-pos">20</td><td class="lg-club">Remo</td><td class="lg-j">23</td><td class="lg-sg">−25</td><td class="lg-pts">16</td></tr>
+          </tbody>
+        </table>
+
+        <p class="foot-note"><span class="mark-ok" aria-hidden="true">↑</span> sobe <span class="dot">·</span> <span class="mark-bad" aria-hidden="true">↓</span> cai <span class="dot">·</span> desempate por saldo</p>
+      </section>
+
+      <!-- 05 · FINANÇAS -->
+      <section class="panel panel-money" aria-labelledby="h-money">
+        <header class="panel-head">
+          <h2 id="h-money">Finanças</h2>
+          <p class="panel-meta">17 nov <span class="dot">·</span> diretoria</p>
+        </header>
+        <p class="money-label">Verba de transferências disponível</p>
+        <p class="money-value">R$ 4,2<small>mi</small></p>
+        <p class="money-sub">Janela fecha em 12 dez <span class="dot">·</span> proposta de R$ 3,8 mi pelo Everton em análise</p>
+
+        <dl class="money-rows">
+          <div><dt>Folha mensal</dt><dd>R$ 1,86 mi</dd></div>
+          <div><dt>Teto de folha</dt><dd>R$ 2,39 mi</dd></div>
+          <div><dt>Margem no teto</dt><dd class="ok">R$ 530 mil</dd></div>
+        </dl>
+        <div class="meter meter-money" role="img" aria-label="Folha em 78 por cento do teto">
+          <span class="meter-fill" style="--v:78%"></span>
+        </div>
+      </section>
+
+      <!-- 06 · CAIXA DE ENTRADA -->
+      <section class="panel panel-inbox" aria-labelledby="h-inbox">
+        <header class="panel-head">
+          <h2 id="h-inbox">Caixa de entrada</h2>
+          <p class="panel-meta">1 não lida</p>
+        </header>
+        <ul class="inbox">
+          <li class="msg is-unread">
+            <p class="msg-top"><span class="msg-from">Diretoria</span><time datetime="2026-11-18T09:42">12 min</time></p>
+            <p class="msg-subject">Proposta oficial pelo Everton Salles</p>
+            <p class="msg-preview">O Athletico-PR subiu para R$ 3,8 mi. A diretoria pede resposta até sexta.</p>
+            <p class="msg-unread"><span class="unread-dot" aria-hidden="true"></span>não lida</p>
+          </li>
+          <li class="msg">
+            <p class="msg-top"><span class="msg-from">Departamento médico</span><time datetime="2026-11-18T08:51">1 h</time></p>
+            <p class="msg-subject">Laudo do Rodrigo Viana</p>
+            <p class="msg-preview">Coxa direita liberada com restrição de 70%. Reavaliação na sexta, após o treino.</p>
+          </li>
+          <li class="msg">
+            <p class="msg-top"><span class="msg-from">Observação</span><time datetime="2026-11-18T06:30">3 h</time></p>
+            <p class="msg-subject">Náutico sai sempre pelo lado direito</p>
+            <p class="msg-preview">63% dos ataques deles terminam no corredor do lateral-esquerdo. Vale reforçar a cobertura.</p>
+          </li>
+          <li class="msg">
+            <p class="msg-top"><span class="msg-from">Base</span><time datetime="2026-11-17T18:40">ontem</time></p>
+            <p class="msg-subject">Vinícius Cabral renova até 2030</p>
+            <p class="msg-preview">Multa de R$ 12 mi para o exterior. O atleta passa a integrar o grupo principal em janeiro.</p>
+          </li>
+          <li class="msg-loading">
+            <span class="skl skl-1"></span><span class="skl skl-2"></span>
+            <span class="loading-lbl" role="status">Carregando mensagens anteriores…</span>
+          </li>
+        </ul>
+      </section>
+
+    </aside>
+  </main>
+
+  <footer class="foot">
+    <p>Atlético Boa Vista <span class="dot">·</span> hub do clube <span class="dot">·</span> v0.9.4</p>
+    <p class="foot-update">Atualizado 18 nov 2026, 09h54 <span class="dot">·</span> dados CBF/Súmula</p>
+    <p class="foot-keys"><kbd>/</kbd> buscar <span class="dot">·</span> <kbd>T</kbd> tema</p>
+  </footer>
+
+</div>
+</body>
+</html>

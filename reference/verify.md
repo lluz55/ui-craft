@@ -62,6 +62,12 @@ Read the JSON as a checklist, not as a score:
 | `contrastFails` | computed ratio over the real hex, inheritance resolved | any entry |
 | `scrollHeight` | page length vs the plan | wildly off = broken spacing |
 
+**A finding is a hypothesis, not a verdict.** The tool does not know your design. Two
+false-positive classes we hit on the first real run: radio and checkbox inputs, whose real target
+is the wrapping `<label>` (the circle is 18 px, the label is 44), and `.sr-only` text, which is
+clipped to 1 px on purpose. Confirm the effective target — or the intent — before changing
+anything. A measuring path that cries wolf gets ignored, and then you have no measuring path.
+
 Then reason about what the numbers **cannot** cover, and say so:
 
 - hierarchy and rhythm (is the eye led in the right order?),

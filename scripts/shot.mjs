@@ -12,6 +12,7 @@
  *   node scripts/shot.mjs <page.html> <out.png> [width] [height] [--full] [--deep]
  *
  *   --full   capture the whole page, not just the viewport
+ *   --dark   emulate prefers-color-scheme: dark
  *   --deep   add the blind-path audit: clipped text, tap targets, heading
  *            outline, focus order, font loading, computed contrast pairs
  *
@@ -28,6 +29,7 @@ import { pathToFileURL } from "node:url";
 const argv = process.argv.slice(2);
 const full = argv.includes("--full");
 const deep = argv.includes("--deep");
+const dark = argv.includes("--dark");
 const [page, out, wArg, hArg] = argv.filter((a) => !a.startsWith("--"));
 
 if (!page || !out) {
@@ -146,7 +148,15 @@ const DEEP = `(() => {
   // text clipped by its own box
   const clipped = [...document.querySelectorAll('p, h1, h2, h3, h4, li, a, button, label, td, th, summary')]
     .filter((el) => el.textContent.trim().length > 0)
-    .filter((el) => el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).overflow !== 'visible')
+    .filter((el) => {
+      // screen-reader-only text is SUPPOSED to be clipped to 1px; not a defect
+      const cs = getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      if (r.width <= 2 || r.height <= 2) return false;
+      if (cs.clipPath && cs.clipPath !== 'none') return false;
+      if (cs.clip && cs.clip !== 'auto') return false;
+      return el.scrollWidth > el.clientWidth + 1 && cs.overflow !== 'visible';
+    })
     .slice(0, 10)
     .map((el) => ({ el: label(el), sel: path(el), text: textOf(el), w: el.clientWidth, content: el.scrollWidth }));
 
@@ -261,6 +271,9 @@ try {
 
   await call("Page.enable");
   await call("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 600 });
+  if (dark) {
+    await call("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: "dark" }] });
+  }
   await call("Page.navigate", { url: pathToFileURL(resolve(page)).href });
   await new Promise((r) => setTimeout(r, 900));
 
