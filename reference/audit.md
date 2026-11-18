@@ -36,9 +36,13 @@ focus order, font loading, computed contrast). Then audit the rest by reading co
 | Table scrolls inside its own container | The page scrolls sideways at 1024px |
 | Destructive actions confirm with context | "Are you sure?" with no object named |
 | Reduced motion respected | Parallax/transform still runs |
+| No `transition: all`, no off-token durations | `shot.mjs --deep` reports `transition-all` or `off-token-duration` |
+| Motion within the surface's budget | A tool surface that animates itself in |
 | Numbers tabular where aligned | Prices in proportional figures |
 | No placeholder copy | Lorem ipsum, "Feature one" |
 | Images have dimensions | Layout shift on load |
+| Images: alt text, real ratio, no stretch, local files | `alt` missing, `object-fit: fill`, hotlinked URL |
+| Text over an image has a measured scrim | White type on a bright photo |
 | Theme coherence (if dark mode) | Inverted colors, unreadable muted text |
 
 ## Web

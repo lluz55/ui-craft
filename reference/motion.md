@@ -12,6 +12,42 @@ Load when adding transitions, page changes, or any animation. Motion is a qualit
 
 Anything else is decoration. Decoration is allowed, but it costs: attention, battery, accessibility, and perceived speed.
 
+## How much motion this surface gets
+
+Decide this before writing a single keyframe, because "some animation" is how pages end up performing
+themselves.
+
+| Surface | Budget |
+| --- | --- |
+| Tool used all day (dashboard, console, editor, inbox) | **0–1** moment. State feedback only: hover, press, focus, toast, sheet. Nothing enters. |
+| Marketing, campaign, launch | **1 moment** — the hero does exactly one thing, once — plus feedback. |
+| Reading surface (article, docs, report) | **0**. Reading is the task. Progress indication only. |
+| Product page / commerce | 2: the image or card response, and add-to-cart confirmation. |
+| Ambient/experiential | Up to 3, but every one must survive reduced motion with the same information. |
+
+If a page is a tool and it has an entrance animation, one of the two is wrong.
+
+## Verifying motion without eyes
+
+Motion is invisible to a blind agent and easy to lie about, so measure it:
+
+```
+node scripts/shot.mjs page.html out.png 1440 900 --deep
+```
+
+| Field | What it proves |
+| --- | --- |
+| `motion[]` | every element with a non-zero transition or animation: property, duration, iteration |
+| `motionIssues[].reason = "transition-all"` | `transition: all` — animating layout you never chose |
+| `motionIssues[].reason = "infinite"` | a loop that never stops: allowed only for loading/syncing |
+| `motionIssues[].reason = "off-token-duration"` | a duration outside the token table above |
+| `reducedMotionDeclared` | whether a `prefers-reduced-motion` block exists at all (`false` = assume unhandled) |
+
+What it cannot prove: whether the movement reads as intentional, whether the easing feels right,
+whether the animation stutters on a slow machine. Write that in "Not verified" instead of writing
+"the transitions feel smooth". A hover-only transition may not appear in `motion[]` until something
+is hovered — that is not evidence that hover states exist.
+
 ## Tokens
 
 | Token | Duration | Use |

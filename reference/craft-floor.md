@@ -68,6 +68,15 @@ If you could not check an item (no browser, no device), the delivery report says
 - [ ] `Decided` / `Verified` / `Not verified` / `Known gaps` block written.
 - [ ] "Not verified" is truthful; if no render was seen, it says so.
 
+## Motion and imagery
+
+- **Images:** every image has alt text (empty if decorative), keeps its aspect ratio, ships from the
+  repo, and reserves its box with width/height. A grey placeholder is a fail.
+- **Motion:** no `transition: all`; durations come from the token table; any animation loop is a
+  loading/syncing signal; `prefers-reduced-motion` is handled and still shows the end state.
+- **Honesty:** "the transitions feel smooth" and "the photos look good" are not verifiable claims for
+  an agent without image input — they belong in "Not verified".
+
 ## Fail conditions that override everything
 
 - Placeholder or lorem copy in a delivered surface.

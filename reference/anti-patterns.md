@@ -32,6 +32,23 @@ If a delivered surface contains items from this list, it is not done. Fix or jus
 - Testimonial with a stock photo and a job title that does not exist.
 - Logo strip with gray logos that all have different optical weights.
 
+## Imagery
+
+- Grey placeholder boxes, `placeholder.com`, hotlinked Unsplash URLs, "image coming soon".
+- An icon in a circle above every section heading.
+- Stock people laughing at a salad; handshakes; rockets; triangles pretending to be growth.
+- Mixed treatments across one page: duotone hero, full-colour cards, grain footer.
+- White text over a photograph with no scrim, or a scrim "checked" on the bright patch.
+- A 3 MB hero, or the same hero photograph on every page.
+
+## Motion
+
+- `transition: all`; durations outside the token table; `linear` on UI movement.
+- Entrance animation on a surface the user opens all day.
+- Infinite loops that signal nothing; spinners where a skeleton fits.
+- Hover scale on cards in a dense grid.
+- Reduced motion silently dropping the information the movement carried.
+
 ## Structural slop
 
 - Centered everything: hero, features, testimonials, CTA, footer — one column, no asymmetry, no edges.

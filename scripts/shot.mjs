@@ -233,8 +233,68 @@ const DEEP = `(() => {
     });
   }
 
+  // images: what a blind agent cannot see, expressed as numbers
+  const imgs = [...document.querySelectorAll('img, picture, [style*="background-image"], [style*="background-image"] *')]
+    .filter((el, i, arr) => arr.indexOf(el) === i)
+    .slice(0, 30)
+    .map((el) => {
+      const r = el.getBoundingClientRect();
+      const cs = getComputedStyle(el);
+      const bg = cs.backgroundImage !== "none" ? cs.backgroundImage : "";
+      const isImg = el.tagName === "IMG";
+      const nw = isImg ? el.naturalWidth : 0;
+      const nh = isImg ? el.naturalHeight : 0;
+      return {
+        el: label(el),
+        src: isImg
+          ? ((el.currentSrc || el.src || "").startsWith("data:") ? "(inline)" : (el.currentSrc || el.src).split("/").pop())
+          : ((bg.match(/url\\(["']?([^"')]+)/) || [])[1] || "").startsWith("data:") ? "(inline bg)" : ((bg.match(/url\\(["']?([^"')]+)/) || [])[1] || "").split("/").pop(),
+        alt: isImg ? (el.getAttribute("alt") === null ? "MISSING" : el.getAttribute("alt")) : "(bg)",
+        natural: isImg ? nw + "x" + nh : "",
+        rendered: Math.round(r.width) + "x" + Math.round(r.height),
+        objectFit: isImg ? cs.objectFit : "",
+        attrs: isImg ? ["width", "height", "loading", "fetchpriority", "decoding", "srcset"].filter((a) => el.hasAttribute(a)).join(",") || "none" : "",
+        broken: isImg && nw === 0,
+        stretched: isImg && nw > 0 && nh > 0 && cs.objectFit === "fill" && Math.abs(nw / nh - r.width / r.height) > 0.02,
+      };
+    });
+
+  // motion: durations, properties and whether reduced-motion is handled
+  const motion = [];
+  for (const el of [...document.querySelectorAll("*")].slice(0, 3000)) {
+    const cs = getComputedStyle(el);
+    const tp = cs.transitionProperty, td = cs.transitionDuration, an = cs.animationName, ad = cs.animationDuration;
+    const hasT = td && td.split(",").some((d) => parseFloat(d) > 0);
+    const hasA = an && an !== "none";
+    if (!hasT && !hasA) continue;
+    motion.push({
+      el: label(el),
+      transition: hasT ? tp + " " + td : "",
+      animation: hasA ? an + " " + ad + " x" + cs.animationIterationCount : "",
+    });
+  }
+  let reducedDeclared = false;
+  const walk = (rules) => { for (const r of rules) { if (r.cssText && r.cssText.includes("prefers-reduced-motion")) reducedDeclared = true; if (r.cssRules) walk(r.cssRules); } };
+  try { for (const sh of document.styleSheets) walk(sh.cssRules); } catch {}
+  // declared durations that match none of the motion tokens in reference/motion.md
+  const tokenRanges = [[0, 80], [120, 180], [200, 300], [300, 400]];
+  const offToken = (m) => {
+    const d = parseFloat((m.transition || m.animation || "").split(" ").find((x) => /ms|s$/.test(x)) || "0");
+    if (!d) return false;
+    const ms = /ms$/.test("" + d) ? d : d * 1000;
+    return !tokenRanges.some(([a, b]) => ms >= a - 1 && ms <= b + 1);
+  };
+
   return {
     viewport: vw,
+    images: imgs,
+    imageFlags: imgs.filter((i) => i.broken || i.stretched || i.alt === "MISSING" || i.attrs === "none"),
+    motion,
+    motionIssues: motion
+      .filter((m) => /\\ball\\b/.test(m.transition) || /infinite/.test(m.animation) || offToken(m))
+      .map((m) => ({ ...m, reason: /\\ball\\b/.test(m.transition) ? "transition-all" : /infinite/.test(m.animation) ? "infinite" : "off-token-duration" }))
+      .slice(0, 12),
+    reducedMotionDeclared: reducedDeclared,
     clipped,
     small,
     headings,
@@ -284,9 +344,14 @@ try {
   await new Promise((r) => setTimeout(r, 900));
 
   const basic = (await call("Runtime.evaluate", { expression: BASIC, returnByValue: true })).result.value;
-  const extra = deep
-    ? (await call("Runtime.evaluate", { expression: DEEP, returnByValue: true })).result.value
+  const extraRes = deep
+    ? await call("Runtime.evaluate", { expression: DEEP, returnByValue: true })
     : {};
+  if (extraRes.exceptionDetails) {
+    const d = extraRes.exceptionDetails;
+    throw new Error("deep probe threw: " + (d.exception?.description || d.text));
+  }
+  const extra = extraRes.result?.value ?? {};
 
   const shot = await call("Page.captureScreenshot", {
     format: "png",

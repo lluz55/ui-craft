@@ -61,6 +61,9 @@ Read the JSON as a checklist, not as a score:
 | `fonts` / `fontStatus` | declared faces actually loaded | `:error`, `fontStatus !== "loaded"` |
 | `contrastFails` | computed ratio over the real hex, inheritance resolved | any entry |
 | `scrollHeight` | page length vs the plan | wildly off = broken spacing |
+| `images` / `imageFlags` | alt text, aspect ratio, dimensions, broken sources | `alt: "MISSING"`, `stretched: true`, `broken: true`, `attrs: "none"` |
+| `motion` / `motionIssues` | what animates, for how long, whether it loops | `transition-all`, `infinite`, `off-token-duration` |
+| `reducedMotionDeclared` | a `prefers-reduced-motion` block exists | `false` with motion present |
 
 **A finding is a hypothesis, not a verdict.** The tool does not know your design. Two
 false-positive classes we hit on the first real run: radio and checkbox inputs, whose real target

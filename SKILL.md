@@ -47,7 +47,7 @@ Then load, in this order and never all at once:
 | `polish` | Last pass: spacing rhythm, alignment, copy, icons, focus rings, empty states. |
 | `harden` | Edge cases: long text, no data, 320px, 200% zoom, offline, destructive actions, i18n, motion sensitivity. |
 
-Refinement references loaded on demand by `build` or `polish`: `reference/typeset.md`, `reference/color.md`, `reference/layout.md`, `reference/motion.md`. They are not separate commands.
+Refinement references loaded on demand by `build` or `polish`: `reference/typeset.md`, `reference/color.md`, `reference/layout.md`, `reference/motion.md`, `reference/imagery.md`. They are not separate commands.
 
 ## Non-negotiables
 
@@ -106,10 +106,14 @@ Stop here and show the plan when the surface is large, the brand is contested, o
 1. Re-read `DESIGN.md`; treat it as law.
 2. Build structure first: semantic HTML / widget tree, real content, no placeholder lorem.
 3. Then the visual layer: surfaces, type, spacing from the unit, borders and shadows from the policy.
+   If the subject has a picture, put it in (`reference/imagery.md`) — a photograph, specimen or diagram
+   beats type carrying the whole page. If it has none, say so in one line and design the absence.
 4. Then states, in this order: empty → loading → error → success → disabled.
 5. Then the platform layer (`reference/web.md` / `reference/flutter.md`): focus rings, keyboard, semantics, tap targets, safe areas, reduced motion, theme variants.
-6. Reject your own first instinct once: after the first pass renders, name the two most "default-looking" elements and either justify or replace them.
-7. If the surface carries numbers, build with `reference/data.md` open, not as a later polish: column alignment and units, reconciliation between views, and a stated reference for every chart.
+6. Set the motion budget for this surface (`reference/motion.md`): a tool gets feedback and nothing that
+   enters; a launch gets exactly one moment. Then implement only that.
+7. Reject your own first instinct once: after the first pass renders, name the two most "default-looking" elements and either justify or replace them.
+8. If the surface carries numbers, build with `reference/data.md` open, not as a later polish: column alignment and units, reconciliation between views, and a stated reference for every chart.
 
 Rules of thumb that survive both platforms:
 
@@ -198,5 +202,6 @@ An empty "Not verified" is suspicious. If you did not open the render, it is not
 | `reference/typeset.md` | Scale, measure, hierarchy, numerals |
 | `reference/color.md` | Color systems, contrast, dark mode, accents |
 | `reference/layout.md` | Grids, breakpoints, spacing, density |
-| `reference/motion.md` | Durations, easing, choreography, reduced motion |
+| `reference/motion.md` | Durations, easing, choreography, budget per surface, reduced motion |
+| `reference/imagery.md` | Photographs and illustration when they exist: art direction, markup, blind verification |
 | `eval/PROTOCOL.md` | How this skill is validated A/B against a blind judge |

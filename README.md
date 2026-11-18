@@ -105,13 +105,14 @@ reference/
   audit.md                mechanical checks, per platform, `file:line` output
   craft-floor.md          the pass/fail gate read before delivering
   verify.md               sighted vs blind verification, and what each may claim
-  typeset.md color.md layout.md motion.md    refinements loaded on demand
+  typeset.md color.md layout.md motion.md imagery.md    refinements loaded on demand
 eval/
   PROTOCOL.md             frozen tasks, A/B arms, blind judge, direction, threshold
   JUDGE.md                the judge's rubric and output contract
   tasks/                  T1-brand, T2-product, T3-flutter, T4-ops, T5-mesa
 research/                 the five source skills, what was taken, what was rejected, decisions
 scripts/shot.mjs          zero-dependency render + screenshot + layout audit (CDP)
+                          --deep also reports images (alt, ratio, size) and motion (durations, loops, reduced-motion)
 scripts/shot.sh           minimal chromium screenshot helper (no metrics)
 runs/                     one directory per eval round (A, B, judge, KEY.txt, verdict.md)
 ```
