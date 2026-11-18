@@ -753,7 +753,13 @@ a { text-decoration-color: var(--accent); text-underline-offset: 3px; }
 }
 .pedido__intro p { margin-top: calc(var(--u) * 4); max-width: 40ch; color: var(--muted); }
 .pedido__direct { font-size: 0.9375rem; }
-.pedido__direct a { color: var(--accent); font-weight: 600; }
+.pedido__direct a {
+  color: var(--accent);
+  font-weight: 600;
+  /* inline links in prose still get a thumb-sized box */
+  display: inline-block;
+  padding-block: 0.25em;
+}
 
 .form { display: flex; flex-direction: column; gap: calc(var(--u) * 4); max-width: 32rem; }
 
@@ -832,7 +838,14 @@ a { text-decoration-color: var(--accent); text-underline-offset: 3px; }
 }
 .footer__brand { display: flex; flex-direction: column; gap: 3px; }
 .footer__nav { display: flex; flex-wrap: wrap; gap: calc(var(--u) * 5); }
-.footer__nav a { font-size: 0.8125rem; color: var(--muted); text-decoration: none; }
+.footer__nav a {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  text-decoration: none;
+  /* measured: 21px tall, below the 24px minimum for a hit target */
+  display: inline-block;
+  padding-block: 0.45rem;
+}
 .footer__nav a:hover { color: var(--ink); text-decoration: underline; }
 .footer__note {
   grid-column: 1 / -1;

@@ -126,19 +126,40 @@ const DEEP = `(() => {
 
   const label = (el) => el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).trim().split(/\\s+/)[0] : '');
 
+  // A finding without a location is not a finding. Build a usable selector.
+  const path = (el) => {
+    const bits = [];
+    let n = el;
+    while (n && n.nodeType === 1 && bits.length < 5) {
+      let bit = n.tagName.toLowerCase();
+      if (n.id) { bits.unshift(bit + '#' + n.id); break; }
+      if (n.className) bit += '.' + String(n.className).trim().split(/\\s+/).slice(0, 2).join('.');
+      const sib = n.parentElement ? [...n.parentElement.children].filter((c) => c.tagName === n.tagName) : [];
+      if (sib.length > 1) bit += ':nth-of-type(' + (sib.indexOf(n) + 1) + ')';
+      bits.unshift(bit);
+      n = n.parentElement;
+    }
+    return bits.join(' > ');
+  };
+  const textOf = (el) => (el.getAttribute('aria-label') || el.textContent || el.value || '').trim().replace(/\\s+/g, ' ').slice(0, 44);
+
   // text clipped by its own box
   const clipped = [...document.querySelectorAll('p, h1, h2, h3, h4, li, a, button, label, td, th, summary')]
     .filter((el) => el.textContent.trim().length > 0)
     .filter((el) => el.scrollWidth > el.clientWidth + 1 && getComputedStyle(el).overflow !== 'visible')
     .slice(0, 10)
-    .map((el) => ({ el: label(el), w: el.clientWidth, content: el.scrollWidth }));
+    .map((el) => ({ el: label(el), sel: path(el), text: textOf(el), w: el.clientWidth, content: el.scrollWidth }));
 
   // anything a finger has to hit
+  // A radio's real target is its label, not the 18px circle inside it.
+  const hitTarget = (el) =>
+    el.matches('input[type="radio"], input[type="checkbox"]') ? el.closest("label") || el : el;
   const small = [...document.querySelectorAll('a[href], button, input, select, textarea, [role="button"]')]
-    .filter((el) => { const r = el.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
-    .filter((el) => { const r = el.getBoundingClientRect(); return r.height < 24 || r.width < 24; })
+    .map((el) => ({ el, t: hitTarget(el) }))
+    .filter(({ t }) => { const r = t.getBoundingClientRect(); return r.width > 0 && r.height > 0; })
+    .filter(({ t }) => { const r = t.getBoundingClientRect(); return r.height < 24 || r.width < 24; })
     .slice(0, 10)
-    .map((el) => { const r = el.getBoundingClientRect(); return { el: label(el), w: Math.round(r.width), h: Math.round(r.height) }; });
+    .map(({ el, t }) => { const r = t.getBoundingClientRect(); return { el: label(t), sel: path(el), text: textOf(el), w: Math.round(r.width), h: Math.round(r.height) }; });
 
   const headings = [...document.querySelectorAll('h1, h2, h3, h4, h5, h6')]
     .map((el) => el.tagName.toLowerCase() + ' ' + el.textContent.trim().slice(0, 60));
